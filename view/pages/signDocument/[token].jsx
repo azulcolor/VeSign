@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux'
 import { veSignApi } from '../../api'
 import Button from '../../components/general/Button'
 import Layout from '../../components/signDocument/Layout.jsx'
-import { setUnsignedDocument } from '../../provider/signDocument/documentSlice'
+import { setIdDocument, setUnsignedDocument } from '../../provider/signDocument/documentSlice'
 import styles from '../../styles/signDocument/text.module.css'
 
 export default function SignDocument({ client }) {
   const dispatch = useDispatch()
 
   dispatch(setUnsignedDocument(client.document))
+  dispatch(setIdDocument(client.idDocument))
 
   return (
     <div>

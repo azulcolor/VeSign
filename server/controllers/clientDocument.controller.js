@@ -82,12 +82,12 @@ export const signDocument = async (req, res) => {
 
 export const send = async (req, res) => {
   const { id } = req.params
-  const { sign, signedDate, documentSigned } = req.body
+  const { sign, signedDate, signedDocument } = req.body
 
   try {
     const [rows] = await pool.query(
-      'UPDATE senddocument SET idStatus = 2, sign = ?, documentSigned = ?, signedDate = ? WHERE idDocument = ?',
-      [sign, documentSigned, signedDate, id]
+      'UPDATE senddocument SET idStatus = 1, sign = ?, documentSigned = ?, signedDate = ? WHERE idDocument = ?',
+      [sign, signedDocument, signedDate, id]
     )
     if (rows.affectedRows <= 0) {
       return res.status(404).json({ message: 'Document not found' })

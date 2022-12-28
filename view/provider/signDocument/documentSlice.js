@@ -11,6 +11,9 @@ export const documentSlice = createSlice({
   name: 'document',
   initialState,
   reducers: {
+    setIdDocument: (state, action) => {
+      state.idDocument = action.payload
+    },
     setUnsignedDocument: (state, action) => {
       state.unsignedDocument = action.payload
     },
@@ -22,7 +25,12 @@ export const documentSlice = createSlice({
     },
   },
 })
-export const { setUnsignedDocument, setSignedDocument, setSign } = documentSlice.actions
+export const {
+  setIdDocument,
+  setUnsignedDocument,
+  setSignedDocument,
+  setSign,
+} = documentSlice.actions
 
 export const selectDocument = (state) => state.document
 
