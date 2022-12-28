@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic'
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
+import Link from 'next/link'
 
 import { selectDocument } from '../../provider/signDocument/documentSlice'
 import Layout from '../../components/signDocument/Layout'
 import styles from '../../styles/signDocument/text.module.css'
+import style from '../../styles/general/button.module.css'
 import Button from '../../components/general/Button'
 
 const PDFViewer = dynamic(() => import('../../components/general/PdfViewer'), {
@@ -24,10 +26,13 @@ export default function DocumentSigned() {
             el boton de Enviar y si quiere volver a hacer la firma presione
             Regresar
           </p>
-          {screenWidth.current > 767 && <Button link={'sent'}>enviar</Button>}
+          {screenWidth.current > 767 && <Button link={'sent'}>Enviar</Button>}
         </div>
         <PDFViewer file={document.signedDocument} screenWidth={screenWidth} />
-        {screenWidth.current < 768 && <Button link={'sent'}>enviar</Button>}
+        {screenWidth.current < 768 && <Button link={'sent'}>Enviar</Button>}
+        <Link href='/signDocument/sign' className={style.back}>
+          Regresar
+        </Link>
       </div>
     </Layout>
   )

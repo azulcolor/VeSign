@@ -8,11 +8,21 @@
 @media (max-width: 768px) {
   .arrow {
     font-size: 24px;
-  } 
+    color: var(--color-title);
+  }
+  .documentContainer {
+    width: 290px;
+    height: 375px;
+  }
 }
 
 @media (min-width: 1024px) {
- .arrow {
+  .arrow {
     font-size: 35px;
- } 
+    color: var(--color-title);
+  }
+  .documentContainer {
+    height: 792px;
+    width: 612px;
+  }
 }

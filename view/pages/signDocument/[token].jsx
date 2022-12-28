@@ -31,15 +31,6 @@ export default function SignDocument({ client }) {
 export const getStaticPaths = async (ctx) => {
   const { data } = await veSignApi.get('clientDocument/tokens')
 
-  // const paths = data.map(({ token }) => ({
-  //   params: { token },
-  // }))
-
-  // return {
-  //   paths,
-  //   fallback: 'blocking',
-  // }
-
   return {
     paths: data.map(({ token }) => ({
       params: { token },
@@ -54,19 +45,10 @@ export const getStaticProps = async ({ params }) => {
   const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
   const { client } = data
 
-  if (!client) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    }
-  }
-
   return {
     props: {
       client,
     },
-    revalidate: 60
+    revalidate: 60,
   }
 }

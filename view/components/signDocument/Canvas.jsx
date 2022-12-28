@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import SignatureCanvas from 'react-signature-canvas'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -18,7 +18,8 @@ export default function Canva() {
   const dispatch = useDispatch()
   const document = useSelector(selectDocument)
 
-  const canvas = useRef(null)
+  const canvas = useRef('')
+
   const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
   const [isSigned, setIsSigned] = useState(false)
 
@@ -44,6 +45,11 @@ export default function Canva() {
     dispatch(setSignedDocument(data.documentSigned))
   }
 
+  const clear = () => {
+    canvas.current.clear()
+    setIsSigned(false)
+  }
+
   return (
     <>
       <SignatureCanvas
@@ -53,24 +59,29 @@ export default function Canva() {
         }}
         maxWidth={screenWidth.current < 768 ? 0.9 : 1.2}
         minWidth={screenWidth.current < 768 ? 0.7 : 1}
+        onBegin={() => setIsSigned(true)}
       />
       <div className={style.restart}>
-        <DeleteIcon
-          onClick={() => canvas.current.clear()}
-          className={style.button}
-        />
+        <DeleteIcon onClick={clear} className={style.button} />
       </div>
       {isSigned ? (
         <Link href='/signDocument/documentSigned'>
-          <button onClick={() => sign()} className={styles.accept}>
+          <button
+            onClick={sign}
+            className={isSigned ? styles.accept : styles.off}
+          >
             Firmar
           </button>
         </Link>
       ) : (
-        <button onClick={() => sign()} className={styles.accept}>
+        <button
+          onClick={() => sign()}
+          className={isSigned ? styles.accept : styles.off}
+        >
           Firmar
         </button>
       )}
+      <Link href='/signDocument/document' className={styles.back}>Regresar</Link>
     </>
   )
 }

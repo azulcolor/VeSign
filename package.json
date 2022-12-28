@@ -8,8 +8,8 @@
     "test": "set NODE_OPTIONS=--experimental-vm-modules && jest --verbose --silent",
     "build": "next build ./view",
     "start": "nodemon src/app.js server/app.js",
-    "start-front": "next start ./view",
-    "dev": "next ./view",
+    "start-front": "next start -p 3001 ./view",
+    "dev": "next -p 3001 ./view",
     "post-update": "yarn upgrade --latest"
   },
   "repository": {

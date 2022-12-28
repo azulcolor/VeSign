@@ -1,7 +1,10 @@
 [data-theme='light'] {
   --color-background: #ffffff;
+  --color-border: #1f2020;
   --color-title: #607d8b;
   --color-h3: #4a88ff;
+  --color-h3-off: #74a4ff;
+  --color-back: #4a88ff; 
   --color-paragraph: #a4b6c5;
   --desktop-title: 35px;
   --desktop-subtitle: 27px;
@@ -19,8 +22,11 @@
 
 [data-theme='dark'] {
   --color-background: #1f2020;
+  --color-border: #b4b3b3;
   --color-title: #d8d4cf;
   --color-h3: #004daa;
+  --color-h3-off: #587ca7;
+  --color-back: #4a88ff; 
   --color-paragraph: #a4b6c5;
   --desktop-title: 35px;
   --desktop-subtitle: 27px;
@@ -70,6 +76,19 @@ body {
   width: 0 !important;
 }
 
+.react-pdf__Page__textContent {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  user-select: none !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
 button {
   border: none;
   outline: none;
@@ -80,7 +99,7 @@ button {
 @media screen and (min-width: 1024px) {
   .signatureCanvas {
     border-radius: 8px 8px 0 0;
-    border: 0.5px solid #000;
+    border: 0.5px solid var(--color-border);
     height: 180px;
     width: 25vw;
     border-bottom: none;
@@ -89,8 +108,8 @@ button {
 
 @media (max-width: 768px) {
   .react-pdf__Page canvas {
-    width: 70% !important;
-    height: 70% !important;
+    width: 290px !important;
+    height: 375px !important;
   }
 
   .react-pdf__Page__textContent {
@@ -98,7 +117,7 @@ button {
   }
   .signatureCanvas {
     border-radius: 8px 8px 0 0;
-    border: 0.5px solid #000;
+    border: 0.5px solid var(--color-border);
     height: 130px;
     width: 83vw;
     border-bottom: none;

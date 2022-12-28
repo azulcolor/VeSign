@@ -9,9 +9,27 @@
     height: 55px;
     transition-delay: 65ms;
   }
-
   .accept:hover {
     background-color: #3577f3;
+  }
+
+  .off {
+    background-color: var(--color-h3-off);
+    color: #ffffff;
+    font-size: var(--desktop-text);
+    font-weight: 400;
+    border-radius: 8px;
+    width: 220px;
+    height: 55px;
+    transition-delay: 65ms;
+  }
+
+  .back {
+    text-decoration: none;
+    color: var(--color-back);
+    font-size: var(--desktop-text);
+    font-weight: 400;
+    margin-top: 3vh;
   }
 }
 @media screen and (max-width: 767px) {
@@ -23,6 +41,21 @@
     border-radius: 8px;
     width: 185px;
     height: 50px;
-    transition-delay: 65ms;
+  }
+  .off {
+    background-color: var(--color-h3-off);
+    color: #ffffff;
+    font-size: var(--mobile-text);
+    font-weight: 400;
+    border-radius: 8px;
+    width: 185px;
+    height: 50px;
+  }
+.back {
+    text-decoration: none;
+    color: var(--color-back);
+    font-size: var(--mobile-text);
+    font-weight: 400;
+    margin-top: 3vh;
   }
 }

@@ -5,5 +5,5 @@ const PDFViewer = dynamic(() => import("../components/general/PdfViewer"), {
 });
 
 export default function PDF() {
-  return <PDFViewer />;
+  return <h1>Eu</h1>;
 }
