@@ -13,7 +13,7 @@ const PDFViewer = dynamic(() => import('../../components/general/PdfViewer'), {
 
 export default function Document() {
   const document = useSelector(selectDocument)
-  const screenWidth = useRef(window.innerWidth)
+  const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
   return (
     <Layout>
       <div className={styles.containerDocument}>
@@ -28,7 +28,7 @@ export default function Document() {
             <Button link={'sign'}>Siguiente</Button>
           )}
         </div>
-        <PDFViewer file={document.unsignedDocument} screenWidth={screenWidth}/>
+        <PDFViewer file={document.unsignedDocument} screenWidth={screenWidth} />
         {screenWidth.current < 768 && <Button link={'sign'}>Siguiente</Button>}
       </div>
     </Layout>

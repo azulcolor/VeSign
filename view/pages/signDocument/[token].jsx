@@ -7,7 +7,6 @@ import { setUnsignedDocument } from '../../provider/signDocument/documentSlice'
 import styles from '../../styles/signDocument/text.module.css'
 
 export default function SignDocument({ client }) {
-
   const dispatch = useDispatch()
 
   dispatch(setUnsignedDocument(client.document))
@@ -29,15 +28,45 @@ export default function SignDocument({ client }) {
   )
 }
 
-export const getServerSideProps = async ({ params }) => {
-  const { token } = params
+export const getStaticPaths = async (ctx) => {
+  const { data } = await veSignApi.get('clientDocument/tokens')
+
+  // const paths = data.map(({ token }) => ({
+  //   params: { token },
+  // }))
+
+  // return {
+  //   paths,
+  //   fallback: 'blocking',
+  // }
+
+  return {
+    paths: data.map(({ token }) => ({
+      params: { token },
+    })),
+    fallback: 'blocking',
+  }
+}
+
+export const getStaticProps = async ({ params }) => {
+  const { token = '' } = params
 
   const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
   const { client } = data
+
+  if (!client) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
 
   return {
     props: {
       client,
     },
+    revalidate: 60
   }
 }

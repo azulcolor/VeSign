@@ -102,3 +102,19 @@ export const send = async (req, res) => {
     })
   }
 }
+
+export const tokens = async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT token FROM senddocument')
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'Tokens not found' })
+    }
+    res.status(200).json(rows)
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      message: 'Error getting tokens',
+    })
+  }
+}

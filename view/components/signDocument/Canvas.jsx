@@ -19,7 +19,7 @@ export default function Canva() {
   const document = useSelector(selectDocument)
 
   const canvas = useRef(null)
-  const screenWidth = useRef(window.innerWidth)
+  const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
   const [isSigned, setIsSigned] = useState(false)
 
   const sign = async () => {

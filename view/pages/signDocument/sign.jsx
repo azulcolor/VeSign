@@ -1,6 +1,6 @@
 
 import Canvas from '../../components/signDocument/Canvas'
-import Layout from '../../components/signDocument/layout'
+import Layout from '../../components/signDocument/Layout'
 import style from '../../styles/signDocument/text.module.css'
 
 export default function Sign() {

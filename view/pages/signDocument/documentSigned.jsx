@@ -13,7 +13,7 @@ const PDFViewer = dynamic(() => import('../../components/general/PdfViewer'), {
 
 export default function DocumentSigned() {
   const document = useSelector(selectDocument)
-  const screenWidth = useRef(window.innerWidth)
+  const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
   return (
     <Layout>
       <div className={styles.containerDocument}>
