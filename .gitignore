@@ -1,0 +1,35 @@
+/node_modules
+.env
+server/helpers/gmail/credentials.json
+server/helpers/gmail/token.json
+
+/view/.pnp
+view/.pnp.js
+
+# testing
+/view/coverage
+
+# next.js
+/view/.next/
+/view/out/
+
+# production
+/view/build
+
+# misc
+view/.DS_Store
+view/*.pem
+
+# debug
+view/npm-debug.log*
+view/yarn-debug.log*
+view/yarn-error.log*
+
+# local env files
+view/.env.local
+view/.env.development.local
+view/.env.test.local
+view/.env.production.local
+
+# vercel
+view/.vercel

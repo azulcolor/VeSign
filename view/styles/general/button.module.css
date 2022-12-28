@@ -1,0 +1,28 @@
+@media screen and (min-width: 1024px) {
+  .accept {
+    background-color: var(--color-h3);
+    color: #ffffff;
+    font-size: var(--desktop-text);
+    font-weight: 400;
+    border-radius: 8px;
+    width: 220px;
+    height: 55px;
+    transition-delay: 65ms;
+  }
+
+  .accept:hover {
+    background-color: #3577f3;
+  }
+}
+@media screen and (max-width: 767px) {
+  .accept {
+    background-color: var(--color-h3);
+    color: #ffffff;
+    font-size: var(--mobile-text);
+    font-weight: 400;
+    border-radius: 8px;
+    width: 185px;
+    height: 50px;
+    transition-delay: 65ms;
+  }
+}

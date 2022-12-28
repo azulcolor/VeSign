@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 7vw;
+  margin: 24px 0 24px 16px;
+}
+
+@media (max-width: 768px) {
+  .arrow {
+    font-size: 24px;
+  } 
+}
+
+@media (min-width: 1024px) {
+ .arrow {
+    font-size: 35px;
+ } 
+}

@@ -1,0 +1,34 @@
+// import default react-pdf entry
+import { Document, Page, pdfjs } from 'react-pdf'
+import { useState } from 'react'
+// import pdf worker as a url, see `next.config.js` and `pdf-worker.js`
+import workerSrc from '../../pdfWorker.js'
+import DocumentControl from './documentControl.jsx'
+
+pdfjs.GlobalWorkerOptions.workerSrc = workerSrc
+
+export default function PDFViewer({ file }) {
+  const [numPages, setNumPages] = useState(null)
+  const [page, setPage] = useState(1)
+
+  function onDocumentLoadSuccess({ numPages: nextNumPages }) {
+    setNumPages(nextNumPages)
+  }
+
+  return (
+    <>
+      <div>
+        <a href={`data:application/pdf;base64,${file}`}>
+          <Document
+            file={`data:application/pdf;base64,${file}`}
+            onLoadSuccess={onDocumentLoadSuccess}
+          >
+            <Page pageNumber={page} />
+          </Document>
+
+          <DocumentControl numPages={numPages} page={page} setPage={setPage} />
+        </a>
+      </div>
+    </>
+  )
+}

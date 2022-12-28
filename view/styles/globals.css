@@ -1,0 +1,106 @@
+[data-theme='light'] {
+  --color-background: #ffffff;
+  --color-title: #607d8b;
+  --color-h3: #4a88ff;
+  --color-paragraph: #a4b6c5;
+  --desktop-title: 35px;
+  --desktop-subtitle: 27px;
+  --desktop-h3: 24px;
+  --desktop-description: 24px;
+  --desktop-text: 22px;
+  --desktop-status: 20px;
+  --mobile-title: 28px;
+  --mobile-subtitle: 20px;
+  --mobile-h3: 17px;
+  --mobile-description: 17px;
+  --mobile-text: 15px;
+  --mobile-status: 13px;
+}
+
+[data-theme='dark'] {
+  --color-background: #1f2020;
+  --color-title: #d8d4cf;
+  --color-h3: #004daa;
+  --color-paragraph: #a4b6c5;
+  --desktop-title: 35px;
+  --desktop-subtitle: 27px;
+  --desktop-h3: 24px;
+  --desktop-description: 24px;
+  --desktop-text: 22px;
+  --desktop-status: 20px;
+  --mobile-title: 28px;
+  --mobile-subtitle: 20px;
+  --mobile-h3: 17px;
+  --mobile-description: 17px;
+  --mobile-text: 15px;
+  --mobile-status: 13px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-background);
+  width: 100%;
+}
+
+.react-pdf__Page {
+  position: relative !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.react-pdf__Page canvas {
+  border-radius: 8px !important;
+  border-style: solid !important;
+  border-width: 0.3px !important;
+}
+
+.react-pdf__Page__annotations.annotationLayer {
+  width: 0 !important;
+}
+
+.linkAnnotation {
+  width: 0 !important;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+@media screen and (min-width: 1024px) {
+  .signatureCanvas {
+    border-radius: 8px 8px 0 0;
+    border: 0.5px solid #000;
+    height: 180px;
+    width: 25vw;
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .react-pdf__Page canvas {
+    width: 70% !important;
+    height: 70% !important;
+  }
+
+  .react-pdf__Page__textContent {
+    left: 0 !important;
+  }
+  .signatureCanvas {
+    border-radius: 8px 8px 0 0;
+    border: 0.5px solid #000;
+    height: 130px;
+    width: 83vw;
+    border-bottom: none;
+  }
+}
