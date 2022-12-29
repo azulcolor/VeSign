@@ -2,20 +2,23 @@ import dynamic from 'next/dynamic'
 import { useSelector } from 'react-redux'
 import { useRef } from 'react'
 
-import { selectDocument } from '../../provider/signDocument/documentSlice'
-import Layout from '../../components/signDocument/Layout'
-import styles from '../../styles/signDocument/text.module.css'
+import { selectDocument } from '../../provider/sign/documentSlice'
+import { SignLayout } from '../../components/layouts/index'
+import styles from '../../styles/sign/text.module.css'
 import Button from '../../components/general/Button'
 
-const PDFViewer = dynamic(() => import('../../components/general/document/PdfViewer'), {
-  ssr: false,
-})
+const PDFViewer = dynamic(
+  () => import('../../components/general/document/PdfViewer'),
+  {
+    ssr: false,
+  }
+)
 
 export default function Document() {
   const document = useSelector(selectDocument)
   const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
   return (
-    <Layout>
+    <SignLayout>
       <div className={styles.containerDocument}>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>Documento a firmar</h1>
@@ -25,12 +28,12 @@ export default function Document() {
             botón de Siguiente
           </p>
           {screenWidth.current > 767 && (
-            <Button link={'sign'}>Siguiente</Button>
+            <Button link={'canvas'}>Siguiente</Button>
           )}
         </div>
         <PDFViewer file={document.unsignedDocument} screenWidth={screenWidth} />
-        {screenWidth.current < 768 && <Button link={'sign'}>Siguiente</Button>}
+        {screenWidth.current < 768 && <Button link={'canvas'}>Siguiente</Button>}
       </div>
-    </Layout>
+    </SignLayout>
   )
 }

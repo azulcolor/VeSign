@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import documentReducer from './signDocument/documentSlice'
+import documentReducer from './sign/documentSlice'
 
 export const store = configureStore({
   reducer: {

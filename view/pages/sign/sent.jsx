@@ -1,10 +1,10 @@
-import Layout from '../../components/signDocument/Layout.jsx'
-import styles from '../../styles/signDocument/text.module.css'
+import { SignLayout } from '../../components/layouts/index'
+import styles from '../../styles/sign/text.module.css'
 
-export default function SignDocument() {
+export default function sign() {
   return (
     <div>
-      <Layout>
+      <SignLayout>
         <div className={styles.container}>
           <h1 className={styles.title}>
             ¡El documento ha sido enviado con éxito!
@@ -14,7 +14,7 @@ export default function SignDocument() {
             envío.
           </p>
         </div>
-      </Layout>
+      </SignLayout>
     </div>
   )
 }

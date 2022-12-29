@@ -1,11 +1,11 @@
-import Canvas from '../../components/signDocument/sign/Canvas'
-import Layout from '../../components/signDocument/Layout'
-import styles from '../../styles/signDocument/text.module.css'
+import Canvas from '../../components/sign/canvas/Canvas'
+import { SignLayout } from '../../components/layouts/index'
+import styles from '../../styles/sign/text.module.css'
 
 export default function Sign() {
   return (
     <>
-      <Layout>
+      <SignLayout>
         <div className={styles.canvasContainer}>
           <div className={styles.textContainer}>
             <h1 className={styles.title}>¿Listo para firmar?</h1>
@@ -16,7 +16,7 @@ export default function Sign() {
           </div>
           <Canvas />
         </div>
-      </Layout>
+      </SignLayout>
     </>
   )
 }

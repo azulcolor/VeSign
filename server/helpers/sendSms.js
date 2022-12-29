@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import axios from 'axios'
 
-const link = 'http://localhost:3001/signDocument/'
+const link = 'http://localhost:3001/sign/'
 
 export const sendSms = async (cellPhone, token, reference) => {
   

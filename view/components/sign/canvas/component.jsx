@@ -1,7 +1,7 @@
 import SignatureCanvas from 'react-signature-canvas'
 import DeleteIcon from '@mui/icons-material/Delete'
 
-import style from '../../../styles/signDocument/canvas.module.css'
+import style from '../../../styles/sign/canvas.module.css'
 
 export default function Component({ canvas, screenWidth, setIsSigned }) {
   const clear = () => {

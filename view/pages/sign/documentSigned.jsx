@@ -3,16 +3,19 @@ import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import Link from 'next/link'
 
-import { selectDocument } from '../../provider/signDocument/documentSlice'
-import Layout from '../../components/signDocument/Layout'
-import styles from '../../styles/signDocument/text.module.css'
+import { selectDocument } from '../../provider/sign/documentSlice'
+import { SignLayout } from '../../components/layouts/index'
+import styles from '../../styles/sign/text.module.css'
 import style from '../../styles/general/button.module.css'
 import Button from '../../components/general/Button'
 import { veSignApi } from '../../api'
 
-const PDFViewer = dynamic(() => import('../../components/general/document/PdfViewer'), {
-  ssr: false,
-})
+const PDFViewer = dynamic(
+  () => import('../../components/general/document/PdfViewer'),
+  {
+    ssr: false,
+  }
+)
 
 const sendDocument = async (document) => {
   const idDocument = document.idDocument
@@ -37,7 +40,7 @@ export default function DocumentSigned() {
   const document = useSelector(selectDocument)
   const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
   return (
-    <Layout>
+    <SignLayout>
       <div className={styles.containerDocument}>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>¡Su documento ha sido firmado!</h1>
@@ -48,10 +51,7 @@ export default function DocumentSigned() {
           </p>
           {screenWidth.current > 767 && (
             <>
-              <Button
-                link={'sent'}
-                onClick={() => sendDocument(document)}
-              >
+              <Button link={'sent'} onClick={() => sendDocument(document)}>
                 Enviar
               </Button>
               <Link href='sign' className={style.back}>
@@ -63,10 +63,7 @@ export default function DocumentSigned() {
         <PDFViewer file={document.signedDocument} screenWidth={screenWidth} />
         {screenWidth.current < 768 && (
           <>
-            <Button
-              link={'sent'}
-              onClick={() => sendDocument(document)}
-            >
+            <Button link={'sent'} onClick={() => sendDocument(document)}>
               Enviar
             </Button>
             <Link href='sign' className={style.back}>
@@ -75,6 +72,6 @@ export default function DocumentSigned() {
           </>
         )}
       </div>
-    </Layout>
+    </SignLayout>
   )
 }
