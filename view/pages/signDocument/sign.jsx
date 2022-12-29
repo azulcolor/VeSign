@@ -1,29 +1,20 @@
-
-import Canvas from '../../components/signDocument/Canvas'
+import Canvas from '../../components/signDocument/sign/Canvas'
 import Layout from '../../components/signDocument/Layout'
-import style from '../../styles/signDocument/text.module.css'
+import styles from '../../styles/signDocument/text.module.css'
 
 export default function Sign() {
   return (
     <>
       <Layout>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '80vh',
-          }}
-        >
-          <div className={style.textContainer}>
-            <h1 className={style.title}>¿Listo para firmar?</h1>
-            <p className={style.text}>
+        <div className={styles.canvasContainer}>
+          <div className={styles.textContainer}>
+            <h1 className={styles.title}>¿Listo para firmar?</h1>
+            <p className={styles.text}>
               Por favor ingrese su firma en el recuadro y presione el botón de
               Firmar cuando esté satisfecho
             </p>
           </div>
-          <Canvas/>
+          <Canvas />
         </div>
       </Layout>
     </>

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../../styles/signDocument/layout.module.css'
 import Logo from './Logo'
@@ -17,17 +16,9 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Logo mode={mode}/>
+      <Logo mode={mode} />
       <div className={styles.headerOptions}>
-        {/* <ul>
-          <li>
-            <Link href='#'>Contacto</Link>
-          </li>
-          <li>
-            <Link href='#'>Acerca de</Link>
-          </li>
-        </ul> */}
-        <Mode mode={mode} setMode={setMode}/>
+        <Mode mode={mode} setMode={setMode} />
       </div>
     </header>
   )

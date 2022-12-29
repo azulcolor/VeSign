@@ -1,4 +1,5 @@
 import { pool } from '../database/config.js'
+import getDate from '../helpers/general/date.js'
 import { signPdf } from '../helpers/signPdf.js'
 
 export const information = async (req, res) => {
@@ -82,7 +83,16 @@ export const signDocument = async (req, res) => {
 
 export const send = async (req, res) => {
   const { id } = req.params
-  const { sign, signedDate, signedDocument } = req.body
+  const { sign, signedDocument } = req.body
+
+  const signedDate = getDate()
+
+  if (!sign || !signedDocument) {
+    return res.status(400).json({
+      ok: false,
+      message: 'Missing data',
+    })
+  }
 
   try {
     const [rows] = await pool.query(

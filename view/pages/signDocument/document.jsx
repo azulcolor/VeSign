@@ -1,13 +1,13 @@
 import dynamic from 'next/dynamic'
 import { useSelector } from 'react-redux'
+import { useRef } from 'react'
 
 import { selectDocument } from '../../provider/signDocument/documentSlice'
 import Layout from '../../components/signDocument/Layout'
 import styles from '../../styles/signDocument/text.module.css'
 import Button from '../../components/general/Button'
-import { useRef } from 'react'
 
-const PDFViewer = dynamic(() => import('../../components/general/PdfViewer'), {
+const PDFViewer = dynamic(() => import('../../components/general/document/PdfViewer'), {
   ssr: false,
 })
 

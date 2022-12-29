@@ -10,30 +10,14 @@ import style from '../../styles/general/button.module.css'
 import Button from '../../components/general/Button'
 import { veSignApi } from '../../api'
 
-const PDFViewer = dynamic(() => import('../../components/general/PdfViewer'), {
+const PDFViewer = dynamic(() => import('../../components/general/document/PdfViewer'), {
   ssr: false,
 })
 
 const sendDocument = async (document) => {
-  console.log('Entro a enviar el documento')
-
   const idDocument = document.idDocument
   const signedDocument = document.signedDocument
   const sign = document.sign
-  var signedDate = new Date()
-  signedDate =
-    signedDate.getUTCFullYear() +
-    '-' +
-    ('00' + (signedDate.getUTCMonth() + 1)).slice(-2) +
-    '-' +
-    ('00' + signedDate.getUTCDate()).slice(-2) +
-    ' ' +
-    ('00' + signedDate.getUTCHours()).slice(-2) +
-    ':' +
-    ('00' + signedDate.getUTCMinutes()).slice(-2) +
-    ':' +
-    ('00' + signedDate.getUTCSeconds()).slice(-2)
-  console.log(signedDate)
 
   try {
     const { data } = await veSignApi.patch(
@@ -41,7 +25,6 @@ const sendDocument = async (document) => {
       {
         sign,
         signedDocument,
-        signedDate,
       }
     )
     console.log(data)
@@ -64,23 +47,33 @@ export default function DocumentSigned() {
             Regresar
           </p>
           {screenWidth.current > 767 && (
-            <button className={style.accept} onClick={() => onClick(info)}>
-              Enviar
-            </button>
+            <>
+              <Button
+                link={'sent'}
+                onClick={() => sendDocument(document)}
+              >
+                Enviar
+              </Button>
+              <Link href='sign' className={style.back}>
+                Regresar
+              </Link>
+            </>
           )}
         </div>
         <PDFViewer file={document.signedDocument} screenWidth={screenWidth} />
         {screenWidth.current < 768 && (
-          <button
-            className={style.accept}
-            onClick={() => sendDocument(document)}
-          >
-            Enviar
-          </button>
+          <>
+            <Button
+              link={'sent'}
+              onClick={() => sendDocument(document)}
+            >
+              Enviar
+            </Button>
+            <Link href='sign' className={style.back}>
+              Regresar
+            </Link>
+          </>
         )}
-        <Link href='/signDocument/sign' className={style.back}>
-          Regresar
-        </Link>
       </div>
     </Layout>
   )

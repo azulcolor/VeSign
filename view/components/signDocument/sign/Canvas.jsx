@@ -1,28 +1,31 @@
 import { useRef, useState } from 'react'
 import SignatureCanvas from 'react-signature-canvas'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
 import DeleteIcon from '@mui/icons-material/Delete'
 
-import { selectDocument } from '../../provider/signDocument/documentSlice'
-import { veSignApi } from '../../api'
-import styles from '../../styles/general/button.module.css'
-import style from '../../styles/signDocument/canvas.module.css'
+import { selectDocument } from '../../../provider/signDocument/documentSlice'
+import { veSignApi } from '../../../api'
+import styles from '../../../styles/general/button.module.css'
+import style from '../../../styles/signDocument/canvas.module.css'
 import {
   setSignedDocument,
   setSign,
-} from '../../provider/signDocument/documentSlice'
+} from '../../../provider/signDocument/documentSlice'
 
 export default function Canva() {
   const dispatch = useDispatch()
   const document = useSelector(selectDocument)
 
   const canvas = useRef('')
-
   const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
+
   const [isSigned, setIsSigned] = useState(false)
 
+  const clear = () => {
+    canvas.current.clear()
+    setIsSigned(false)
+  }
   const sign = async () => {
     if (canvas.current.isEmpty()) {
       alert('Ingrese una firma antes de continuar')
@@ -33,8 +36,6 @@ export default function Canva() {
       .getTrimmedCanvas()
       .toDataURL('image/png')
 
-    console.log(canvas.current.isEmpty())
-
     dispatch(setSign(signImage))
 
     const { data } = await veSignApi.patch('/clientDocument/sign', {
@@ -42,12 +43,8 @@ export default function Canva() {
       documentToSign: `data:application/pdf;base64,${document.unsignedDocument}`,
       screenWidth: screenWidth.current,
     })
-    dispatch(setSignedDocument(data.documentSigned))
-  }
 
-  const clear = () => {
-    canvas.current.clear()
-    setIsSigned(false)
+    dispatch(setSignedDocument(data.documentSigned))
   }
 
   return (
@@ -61,11 +58,13 @@ export default function Canva() {
         minWidth={screenWidth.current < 768 ? 0.7 : 1}
         onBegin={() => setIsSigned(true)}
       />
+
       <div className={style.restart}>
         <DeleteIcon onClick={clear} className={style.button} />
       </div>
+
       {isSigned ? (
-        <Link href='/signDocument/documentSigned'>
+        <Link href='documentSigned'>
           <button
             onClick={sign}
             className={isSigned ? styles.accept : styles.off}
@@ -75,13 +74,16 @@ export default function Canva() {
         </Link>
       ) : (
         <button
-          onClick={() => sign()}
+          onClick={sign}
           className={isSigned ? styles.accept : styles.off}
         >
           Firmar
         </button>
       )}
-      <Link href='/signDocument/document' className={styles.back}>Regresar</Link>
+
+      <Link href='document' className={styles.back}>
+        Regresar
+      </Link>
     </>
   )
 }
