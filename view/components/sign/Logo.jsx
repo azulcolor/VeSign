@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
-import styles from '../../styles/signDocument/layout.module.css'
+import styles from '../../styles/layouts/signLayout.module.css'
 import darkLogo from '../../public/darkLogo.png'
 import lightLogo from '../../public/lightLogo.png'
 

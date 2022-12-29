@@ -1,5 +1,6 @@
 export default function getDate() {
   var date = new Date()
+  date = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
   date =
     date.getUTCFullYear() +
     '-' +

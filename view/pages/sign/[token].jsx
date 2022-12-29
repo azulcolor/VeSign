@@ -2,11 +2,14 @@ import { useDispatch } from 'react-redux'
 
 import { veSignApi } from '../../api'
 import Button from '../../components/general/Button'
-import Layout from '../../components/signDocument/Layout.jsx'
-import { setIdDocument, setUnsignedDocument } from '../../provider/signDocument/documentSlice'
-import styles from '../../styles/signDocument/text.module.css'
+import { SignLayout } from '../../components/layouts/index'
+import {
+  setIdDocument,
+  setUnsignedDocument,
+} from '../../provider/sign/documentSlice'
+import styles from '../../styles/sign/text.module.css'
 
-export default function SignDocument({ client }) {
+export default function sign({ client }) {
   const dispatch = useDispatch()
 
   dispatch(setUnsignedDocument(client.document))
@@ -14,7 +17,7 @@ export default function SignDocument({ client }) {
 
   return (
     <div>
-      <Layout>
+      <SignLayout>
         <div className={styles.container}>
           <h1 className={styles.title}>Aviso de privacidad</h1>
           <p className={styles.text}>
@@ -24,7 +27,7 @@ export default function SignDocument({ client }) {
           </p>
           <Button link={'document'}>Acepto</Button>
         </div>
-      </Layout>
+      </SignLayout>
     </div>
   )
 }

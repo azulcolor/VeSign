@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styles from '../../styles/signDocument/layout.module.css'
+import styles from '../../styles/layouts/signLayout.module.css'
 import Logo from './Logo'
 import Mode from '../general/Mode'
 
