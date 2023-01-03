@@ -6,6 +6,7 @@ import { selectDocument } from '../../provider/sign/documentSlice'
 import { SignLayout } from '../../components/layouts/index'
 import styles from '../../styles/sign/text.module.css'
 import Button from '../../components/general/Button'
+import Error from '../../components/error/Error'
 
 const PDFViewer = dynamic(
   () => import('../../components/general/document/PdfViewer'),
@@ -17,6 +18,11 @@ const PDFViewer = dynamic(
 export default function Document() {
   const document = useSelector(selectDocument)
   const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
+
+  if (!document.unsignedDocument || document.signed) {
+    return <Error number={1} />
+  }
+
   return (
     <SignLayout>
       <div className={styles.containerDocument}>

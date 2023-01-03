@@ -5,11 +5,13 @@ const initialState = {
   signedDocument: null,
   sign: null,
   idDocument: null,
+  signed: false,
 }
 
 export const documentSlice = createSlice({
   name: 'document',
   initialState,
+
   reducers: {
     setIdDocument: (state, action) => {
       state.idDocument = action.payload
@@ -23,13 +25,18 @@ export const documentSlice = createSlice({
     setSign: (state, action) => {
       state.sign = action.payload
     },
+    setSigned: (state, action) => {
+      state.signed = action.payload
+    },
   },
 })
+
 export const {
   setIdDocument,
   setUnsignedDocument,
   setSignedDocument,
   setSign,
+  setSigned,
 } = documentSlice.actions
 
 export const selectDocument = (state) => state.document
