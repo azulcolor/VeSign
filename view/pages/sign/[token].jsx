@@ -46,13 +46,26 @@ export const getStaticPaths = async (ctx) => {
 export const getStaticProps = async ({ params }) => {
   const { token = '' } = params
 
-  const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
-  const { client } = data
-
-  return {
-    props: {
-      client,
-    },
-    revalidate: 60,
+  try {
+    const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
+    const { client } = data
+    if (!data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      }
+    }
+    return {
+      props: {
+        client,
+      },
+      revalidate: 10,
+    }
+  } catch (error) {
+    return {
+      notFound: true,
+    }
   }
 }

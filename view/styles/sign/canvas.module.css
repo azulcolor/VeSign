@@ -17,7 +17,25 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .restart {
+    display: flex;
+    justify-content: flex-end;
+    border: 0.5px solid var(--color-border);
+    border-top: none;
+    height: 40px;
+    width: 75vw;
+    margin-bottom: 30px;
+    border-radius: 0 0 8px 8px;
+  }
+  .button {
+    font-size: 32px;
+    margin: 0 10px 10px 0;
+    color: var(--color-title);
+  }
+}
+
+@media (max-width: 767px) {
   .restart {
     display: flex;
     justify-content: flex-end;

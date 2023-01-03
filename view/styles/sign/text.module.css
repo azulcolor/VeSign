@@ -38,6 +38,45 @@
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 22vw;
+    height: 85vh;
+  }
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 68vw;
+  }
+  .title {
+    font-size: var(--desktop-subtitle);
+    text-align: center;
+    font-weight: 500;
+    color: var(--color-title);
+  }
+  .text {
+    font-size: var(--desktop-text);
+    text-align: center;
+    font-weight: 400;
+    color: var(--color-title);
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  .containerDocument {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 92vh;
+    gap: 2vw;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .container {
     display: flex;

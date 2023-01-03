@@ -49,7 +49,7 @@ export default function DocumentSigned() {
             el boton de Enviar y si quiere volver a hacer la firma presione
             Regresar
           </p>
-          {screenWidth.current > 767 && (
+          {screenWidth.current > 1023 && (
             <>
               <Button link={'sent'} onClick={() => sendDocument(document)}>
                 Enviar
@@ -60,8 +60,8 @@ export default function DocumentSigned() {
             </>
           )}
         </div>
-        <PDFViewer file={document.signedDocument} screenWidth={screenWidth} />
-        {screenWidth.current < 768 && (
+        <PDFViewer file={document.signedDocument} />
+        {screenWidth.current < 1024 && (
           <>
             <Button link={'sent'} onClick={() => sendDocument(document)}>
               Enviar

@@ -1,4 +1,4 @@
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .screenContainer {
     display: flex;
     flex-direction: column;
@@ -68,7 +68,10 @@
     font-weight: 300;
   }
 }
-@media (max-width: 768px) {
+
+
+
+@media (max-width: 767px) {
   .screenContainer {
     display: flex;
     flex-direction: column;

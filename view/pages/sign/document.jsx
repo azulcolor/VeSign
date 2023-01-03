@@ -27,12 +27,15 @@ export default function Document() {
             presione las flechas. Cuando esté listo para firmar presione el
             botón de Siguiente
           </p>
-          {screenWidth.current > 767 && (
+          {screenWidth.current > 1023 && (
             <Button link={'canvas'}>Siguiente</Button>
           )}
         </div>
-        <PDFViewer file={document.unsignedDocument} screenWidth={screenWidth} />
-        {screenWidth.current < 768 && <Button link={'canvas'}>Siguiente</Button>}
+
+        <PDFViewer file={document.unsignedDocument} />
+        {screenWidth.current < 1024 && (
+          <Button link={'canvas'}>Siguiente</Button>
+        )}
       </div>
     </SignLayout>
   )
