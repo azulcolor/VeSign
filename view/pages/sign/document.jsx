@@ -2,11 +2,12 @@ import dynamic from 'next/dynamic'
 import { useSelector } from 'react-redux'
 import { useRef } from 'react'
 
-import { selectDocument } from '../../provider/sign/documentSlice'
-import { SignLayout } from '../../components/layouts/index'
 import styles from '../../styles/sign/text.module.css'
 import Button from '../../components/general/Button'
 import Error from '../../components/error/Error'
+
+import { selectDocument } from '../../provider/sign/documentSlice'
+import { SignLayout } from '../../components/layouts/index'
 
 const PDFViewer = dynamic(
   () => import('../../components/general/document/PdfViewer'),

@@ -1,15 +1,17 @@
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
+
 import { useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Link from 'next/link'
 
-import { selectDocument, setSigned } from '../../provider/sign/documentSlice'
-import { SignLayout } from '../../components/layouts/index'
 import styles from '../../styles/sign/text.module.css'
 import style from '../../styles/general/button.module.css'
 import Button from '../../components/general/Button'
-import { veSignApi } from '../../api'
 import Error from '../../components/error/Error'
+
+import { selectDocument, setSigned } from '../../provider/sign/documentSlice'
+import { SignLayout } from '../../components/layouts/index'
+import { veSignApi } from '../../api'
 
 const PDFViewer = dynamic(
   () => import('../../components/general/document/PdfViewer'),
@@ -24,15 +26,12 @@ const sendDocument = async (document, dispatch) => {
   const sign = document.sign
 
   try {
-    const { data } = await veSignApi.patch(
-      `/clientDocument/send/${idDocument}`,
-      {
-        sign,
-        signedDocument,
-      }
-    )
+    await veSignApi.patch(`/clientDocument/send/${idDocument}`, {
+      sign,
+      signedDocument,
+    })
+
     dispatch(setSigned(true))
-    console.log(data)
   } catch (error) {
     console.log('error', error)
   }
@@ -57,6 +56,7 @@ export default function DocumentSigned() {
             el boton de Enviar y si quiere volver a hacer la firma presione
             Regresar
           </p>
+
           {screenWidth.current > 1023 && (
             <>
               <Button
@@ -71,6 +71,7 @@ export default function DocumentSigned() {
             </>
           )}
         </div>
+
         <PDFViewer file={document.signedDocument} />
         {screenWidth.current < 1024 && (
           <>

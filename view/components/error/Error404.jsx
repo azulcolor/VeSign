@@ -1,6 +1,7 @@
-import { SignLayout } from '../layouts'
 import styles from '../../styles/error.module.css'
 import CatImage from './catImage'
+
+import { SignLayout } from '../layouts'
 
 export default function Error404({ number }) {
   return (

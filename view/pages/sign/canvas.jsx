@@ -1,15 +1,14 @@
 import { useSelector } from 'react-redux'
 
 import Canvas from '../../components/sign/canvas/Canvas'
-import { selectDocument } from '../../provider/sign/documentSlice'
-import { SignLayout } from '../../components/layouts/index'
 import styles from '../../styles/sign/text.module.css'
 import Error from '../../components/error/Error'
 
+import { selectDocument } from '../../provider/sign/documentSlice'
+import { SignLayout } from '../../components/layouts/index'
+
 export default function Sign() {
   const document = useSelector(selectDocument)
-
-  console.log(document)
 
   if (!document.unsignedDocument || document.signed) {
     return <Error number={3} />
@@ -25,6 +24,7 @@ export default function Sign() {
             Firmar cuando esté satisfecho
           </p>
         </div>
+
         <Canvas />
       </div>
     </SignLayout>
