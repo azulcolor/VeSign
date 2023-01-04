@@ -1,15 +1,14 @@
 import { useDispatch } from 'react-redux'
 
-import { veSignApi } from '../../api'
 import Button from '../../components/general/Button'
-import { SignLayout } from '../../components/layouts/index'
-import {
-  setIdDocument,
-  setUnsignedDocument,
-} from '../../provider/sign/documentSlice'
+import { setIdDocument, setUnsignedDocument } from '../../provider/sign/documentSlice'
 import styles from '../../styles/sign/text.module.css'
 
+import { veSignApi } from '../../api'
+import { SignLayout } from '../../components/layouts/index'
+
 export default function sign({ client }) {
+
   const dispatch = useDispatch()
 
   dispatch(setUnsignedDocument(client.document))
@@ -33,6 +32,7 @@ export default function sign({ client }) {
 }
 
 export const getStaticPaths = async (ctx) => {
+  
   const { data } = await veSignApi.get('clientDocument/tokens')
 
   return {
@@ -44,15 +44,33 @@ export const getStaticPaths = async (ctx) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const { token = '' } = params
 
-  const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
-  const { client } = data
+  const { token } = params
 
-  return {
-    props: {
-      client,
-    },
-    revalidate: 60,
+  try {
+
+    const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
+    const { client } = data
+
+    if (!data) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      }
+    }
+
+    return {
+      props: {
+        client,
+      },
+      revalidate: 10,
+    }
+
+  } catch (error) {
+    return {
+      notFound: true,
+    }
   }
 }

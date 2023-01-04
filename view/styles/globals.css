@@ -97,6 +97,7 @@ button {
 }
 
 @media screen and (min-width: 1024px) {
+
   .signatureCanvas {
     border-radius: 8px 8px 0 0;
     border: 0.5px solid var(--color-border);
@@ -106,7 +107,25 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .react-pdf__Page canvas {
+    width: 490px !important;
+    height: 55vh !important;
+  }
+
+  .react-pdf__Page__textContent {
+    left: 0 !important;
+  }
+  .signatureCanvas {
+    border-radius: 8px 8px 0 0;
+    border: 0.5px solid var(--color-border);
+    height: 230px;
+    width: 75vw;
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 767px) {
   .react-pdf__Page canvas {
     width: 290px !important;
     height: 375px !important;

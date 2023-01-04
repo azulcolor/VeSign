@@ -1,9 +1,10 @@
 import Image from 'next/image'
+
 import { useState, useEffect } from 'react'
 
 import styles from '../../styles/layouts/signLayout.module.css'
-import darkLogo from '../../public/darkLogo.png'
-import lightLogo from '../../public/lightLogo.png'
+import darkLogo from '../../public/images/logo/darkLogo.png'
+import lightLogo from '../../public/images/logo/lightLogo.png'
 
 export default function Logo({ mode }) {
   const [windowWidth, setWindowWidth] = useState()

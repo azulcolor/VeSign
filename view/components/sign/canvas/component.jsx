@@ -6,6 +6,7 @@ import style from '../../../styles/sign/canvas.module.css'
 export default function Component({ canvas, screenWidth, setIsSigned }) {
   const clear = () => {
     canvas.current.clear()
+
     setIsSigned(false)
   }
   return (

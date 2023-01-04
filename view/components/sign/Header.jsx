@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+
 import styles from '../../styles/layouts/signLayout.module.css'
-import Logo from './Logo'
+import Logo from '../general/Logo'
 import Mode from '../general/Mode'
 
 export default function Header() {

@@ -39,7 +39,6 @@ export const signPdf = async (pdf, sign, screenWidth) => {
         const signWidth =
           screenWidth < 768 ? signImage.width / 2 : signImage.width
         const signHeight = screenWidth < 768 ? signImage.height / 4 : signImage.height / 2
-        console.log(signImage.height)
         page[pageIndex].drawImage(signImage, {
           x: x - 30,
           y: signImage.height > 250 ? y - 27 : y,

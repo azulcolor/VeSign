@@ -26,26 +26,30 @@ export const information = async (req, res) => {
         break
       case 2:
         return res.status(400).json({
+          ok: false,
           status: 2,
           message: 'Document is already signed',
         })
         break
       case 3:
         return res.status(400).json({
+          ok: false,
           status: 3,
           message: 'Document is already accepted',
         })
         break
       case 4:
         return res.status(400).json({
+          ok: false,
           status: 3,
           message: 'Document is already rejected',
         })
         break
       case 5:
         return res.status(400).json({
+          ok: false,
           status: 5,
-          message: 'Document is already anulled',
+          message: 'Document is already annulled',
         })
         break
 
@@ -96,7 +100,7 @@ export const send = async (req, res) => {
 
   try {
     const [rows] = await pool.query(
-      'UPDATE senddocument SET idStatus = 1, sign = ?, documentSigned = ?, signedDate = ? WHERE idDocument = ?',
+      'UPDATE senddocument SET idStatus = 2, sign = ?, documentSigned = ?, signedDate = ? WHERE idDocument = ?',
       [sign, signedDocument, signedDate, id]
     )
     if (rows.affectedRows <= 0) {
