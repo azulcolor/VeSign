@@ -53,7 +53,7 @@ export const createSignDocument = async (req, res) => {
     const [document] = await pool.query('INSERT INTO senddocument SET ?', [
       body,
     ])
-    console.log(document.insertId)
+
     body.idDocument = document.insertId
 
     let [areaCode] = await pool.query(
@@ -74,12 +74,12 @@ export const createSignDocument = async (req, res) => {
     ])
 
     // send email
-
-    await sendEmail(body.email, body.fullName, body.token)
+    
+    if (body.email) await sendEmail(body.email, body.fullName, body.token)
 
     // send sms
 
-    await sendSms(phoneNumber, body.token, body.idDocument)
+    if(body.phoneNumber) await sendSms(phoneNumber, body.token, body.idDocument)
 
     res.status(201).json({
       ok: true,

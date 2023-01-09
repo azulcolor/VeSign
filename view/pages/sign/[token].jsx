@@ -1,14 +1,16 @@
 import { useDispatch } from 'react-redux'
 
 import Button from '../../components/general/Button'
-import { setIdDocument, setUnsignedDocument } from '../../provider/sign/documentSlice'
+import {
+  setIdDocument,
+  setUnsignedDocument,
+} from '../../provider/sign/documentSlice'
 import styles from '../../styles/sign/text.module.css'
 
 import { veSignApi } from '../../api'
 import { SignLayout } from '../../components/layouts/index'
 
 export default function sign({ client }) {
-
   const dispatch = useDispatch()
 
   dispatch(setUnsignedDocument(client.document))
@@ -32,7 +34,6 @@ export default function sign({ client }) {
 }
 
 export const getStaticPaths = async (ctx) => {
-  
   const { data } = await veSignApi.get('clientDocument/tokens')
 
   return {
@@ -44,11 +45,9 @@ export const getStaticPaths = async (ctx) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-
   const { token } = params
 
   try {
-
     const { data } = await veSignApi.get(`/clientDocument/info/${token}`)
     const { client } = data
 
@@ -67,7 +66,6 @@ export const getStaticProps = async ({ params }) => {
       },
       revalidate: 10,
     }
-
   } catch (error) {
     return {
       notFound: true,
