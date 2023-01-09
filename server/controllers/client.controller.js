@@ -79,7 +79,9 @@ export const options = async (req, res) => {
 
     const [idiom] = await pool.query('SELECT idIdiom, idiom FROM idiom')
 
-    const [areaCode] = await pool.query('SELECT idAreaCode, areaCode FROM areacode')
+    const [areaCode] = await pool.query(
+      'SELECT idAreaCode, areaCode FROM areacode'
+    )
 
     const [rol] = await pool.query('SELECT idRol, rol FROM rol')
 
@@ -104,6 +106,32 @@ export const options = async (req, res) => {
     return res.status(500).json({
       ok: false,
       message: 'Error getting options',
+    })
+  }
+}
+
+export const instantCash = async (req, res) => {
+  const { token } = req.params
+
+  try {
+    const [rows] = await pool.query(
+      'SELECT d.idStatus, s.statusName, IF(d.idStatus = 1 or d.idStatus = 5, IF(d.template = 1, t.pdfTemplate, d.document), d.documentSigned) AS document FROM senddocument d, documentstatus s, pdftemplate t WHERE d.idStatus = s.idStatus AND d.idTemplate = t.idTemplate AND d.token = ?',
+      [token]
+    )
+    if (rows.length === 0) {
+      return res.status(404).json({
+        message: 'client not found',
+      })
+    }
+    return res.status(200).json({
+      ok: true,
+      message: 'client found',
+      client: rows[0],
+    })
+  } catch {
+    return res.status(500).json({
+      ok: false,
+      message: 'Error getting client',
     })
   }
 }
