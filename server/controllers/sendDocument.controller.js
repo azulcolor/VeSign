@@ -74,12 +74,13 @@ export const createSignDocument = async (req, res) => {
     ])
 
     // send email
-    
+
     if (body.email) await sendEmail(body.email, body.fullName, body.token)
 
     // send sms
 
-    if(body.phoneNumber) await sendSms(phoneNumber, body.token, body.idDocument)
+    if (body.phoneNumber)
+      await sendSms(phoneNumber, body.token, body.idDocument)
 
     res.status(201).json({
       ok: true,
@@ -104,6 +105,8 @@ export const instantCash = async (req, res) => {
     console.log(rows.insertId)
     body.idDocument = rows.insertId
 
+    if (!body.idAreaCode) body.idAreaCode = 1
+
     let [areaCode] = await pool.query(
       'SELECT areaCode FROM areacode WHERE idAreaCode = ?',
       [body.idAreaCode]
@@ -127,11 +130,12 @@ export const instantCash = async (req, res) => {
 
     // send email
 
-    await sendEmail(body.email, body.fullName, body.token)
+    if (body.email) await sendEmail(body.email, body.fullName, body.token)
 
     // send sms
 
-    await sendSms(phoneNumber, body.token, body.idDocument)
+    if (body.phoneNumber)
+      await sendSms(phoneNumber, body.token, body.idDocument)
 
     res.status(201).json({
       ok: true,
