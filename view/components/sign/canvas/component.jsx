@@ -16,8 +16,8 @@ export default function Component({ canvas, screenWidth, setIsSigned }) {
         canvasProps={{
           className: 'signatureCanvas',
         }}
-        maxWidth={screenWidth.current < 768 ? 0.9 : 1.2}
-        minWidth={screenWidth.current < 768 ? 0.7 : 1}
+        maxWidth={screenWidth.current < 830 ? 0.9 : 1.2}
+        minWidth={screenWidth.current < 830 ? 0.7 : 1}
         onBegin={() => setIsSigned(true)}
       />
 

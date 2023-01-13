@@ -9,9 +9,9 @@ import style from '../../styles/general/button.module.css'
 import Button from '../../components/general/Button'
 import Error from '../../components/error/Error'
 
-import { selectDocument, setSigned } from '../../provider/sign/documentSlice'
+import { selectDocument } from '../../provider/sign/documentSlice'
 import { SignLayout } from '../../components/layouts/index'
-import { veSignApi } from '../../api'
+import { useSendDocument } from '../../hooks/documents/useSendDocument'
 
 const PDFViewer = dynamic(
   () => import('../../components/general/document/PdfViewer'),
@@ -20,26 +20,10 @@ const PDFViewer = dynamic(
   }
 )
 
-const sendDocument = async (document, dispatch) => {
-  const idDocument = document.idDocument
-  const signedDocument = document.signedDocument
-  const sign = document.sign
-
-  try {
-    await veSignApi.patch(`/clientDocument/send/${idDocument}`, {
-      sign,
-      signedDocument,
-    })
-
-    dispatch(setSigned(true))
-  } catch (error) {
-    console.log('error', error)
-  }
-}
-
 export default function DocumentSigned() {
-  const document = useSelector(selectDocument)
   const screenWidth = useRef(typeof window !== 'undefined' && window.innerWidth)
+
+  const document = useSelector(selectDocument)
   const dispatch = useDispatch()
 
   if (!document.unsignedDocument || document.signed) {
@@ -61,7 +45,7 @@ export default function DocumentSigned() {
             <>
               <Button
                 link={'sent'}
-                onClick={() => sendDocument(document, dispatch)}
+                onClick={() => useSendDocument(dispatch, document)}
               >
                 Enviar
               </Button>
@@ -77,7 +61,7 @@ export default function DocumentSigned() {
           <>
             <Button
               link={'sent'}
-              onClick={() => sendDocument(document, dispatch)}
+              onClick={() => useSendDocument(dispatch, document)}
             >
               Enviar
             </Button>

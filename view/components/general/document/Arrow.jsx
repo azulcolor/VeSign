@@ -3,15 +3,15 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 import styles from '../../../styles/general/documentControl.module.css'
 
-export default function Arrow(props) {
+export default function Arrow({ onClick, page, condition, direction }) {
   return (
     <>
       <div style={{ width: '40px' }}>
-        {props.page === props.condition ? (
+        {page === condition ? (
           <></>
         ) : (
-          <button onClick={props.onClick}>
-            {props.direction === 'left' ? (
+          <button onClick={onClick}>
+            {direction === 'left' ? (
               <ArrowBackIosSharp className={styles.arrow} />
             ) : (
               <ArrowForwardIosIcon className={styles.arrow} />

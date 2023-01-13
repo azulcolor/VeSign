@@ -33,7 +33,7 @@ export default function sign({ client }) {
   )
 }
 
-export const getStaticPaths = async (ctx) => {
+export const getStaticPaths = async () => {
   const { data } = await veSignApi.get('clientDocument/tokens')
 
   return {
@@ -64,7 +64,7 @@ export const getStaticProps = async ({ params }) => {
       props: {
         client,
       },
-      revalidate: 10,
+      revalidate: 3,
     }
   } catch (error) {
     return {
