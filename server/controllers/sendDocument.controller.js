@@ -100,6 +100,7 @@ export const instantCash = async (req, res) => {
   try {
     const { body } = req
     body.idTemplate = 1
+    body.template = 0
 
     const [rows] = await pool.query('INSERT INTO senddocument SET ?', [body])
     console.log(rows.insertId)
@@ -164,12 +165,29 @@ export const changeState = async (req, res) => {
     if (rows.affectedRows <= 0)
       return res.status(404).json({ message: 'Document not found' })
 
-    res.sendStatus(204)
+    return res.status(204).json()
   } catch (error) {
     console.log(error)
     return res.status(500).json({
       ok: false,
       message: 'Error change state document',
+    })
+  }
+}
+
+export const cancelDocument = async (req, res) => {
+  const { token } = req.params
+
+  try {
+    await pool.query('UPDATE senddocument SET idStatus = 4 WHERE token = ?', [
+      token,
+    ])
+    return res.status(204).json()
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      message: 'Error cancel document',
     })
   }
 }

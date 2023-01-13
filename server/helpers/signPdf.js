@@ -37,8 +37,9 @@ export const signPdf = async (pdf, sign, screenWidth) => {
       if (fieldName.includes('Firma')) {
         //Here we add the image on the field
         const signWidth =
-          screenWidth < 768 ? signImage.width / 2 : signImage.width
-        const signHeight = screenWidth < 768 ? signImage.height / 4 : signImage.height / 2
+          screenWidth < 830 ? signImage.width / 2 : signImage.width
+        const signHeight =
+          screenWidth < 830 ? signImage.height / 4 : signImage.height / 2
         page[pageIndex].drawImage(signImage, {
           x: x - 30,
           y: signImage.height > 250 ? y - 27 : y,
@@ -65,7 +66,4 @@ export const signPdf = async (pdf, sign, screenWidth) => {
   //save the pdf with the new changes
   const pdfSigned = await pdfDocument.saveAsBase64()
   return pdfSigned
-
-  //Write the pdf in the storage
-  // fs.writeFileSync("documentSigned.pdf", pdfSigned);
 }

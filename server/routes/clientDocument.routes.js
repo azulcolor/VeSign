@@ -1,8 +1,5 @@
-/*
-    ClientDocument Routes
-    host + /api/client
-*/
 import { Router } from 'express'
+
 import { jwtDocumentValidator } from '../middlewares/jwtValidator.js'
 import {
   signDocument,

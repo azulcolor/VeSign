@@ -1,15 +1,9 @@
-/*
-    Users Routes / Auth
-    host + /api/auth
-*/
 import { Router } from 'express'
+
 import { fieldValidator } from '../middlewares/fieldValidator.js'
-import {
-  jwtUserValidator,
-  jwtSalaValidator,
+import { jwtUserValidator, jwtSalaValidator,
 } from '../middlewares/jwtValidator.js'
 import { createUserChecker } from '../middlewares/fieldChecker..js'
-
 import {
   postUser,
   getUsers,
@@ -30,8 +24,8 @@ router.post(
 router.post('/', userLogin)
 router.get('/user', jwtSalaValidator, getUsers)
 router.get('/userToken', jwtUserValidator, tokenValidator)
-router.get('/user/:id', getUser)
-router.patch('/user/:id', updateUser)
-router.delete('/user/:id', deleteUser)
+router.get('/user/:id', jwtSalaValidator, getUser)
+router.patch('/user/:id', jwtSalaValidator, updateUser)
+router.delete('/user/:id', jwtSalaValidator, deleteUser)
 
 export default router

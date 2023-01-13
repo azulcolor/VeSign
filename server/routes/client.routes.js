@@ -1,8 +1,5 @@
-/*
-    Dashboard Routes
-    host + /api/clients
-*/
 import { Router } from 'express'
+
 import { clients, client, options, instantCash } from '../controllers/client.controller.js'
 
 const router = Router()
