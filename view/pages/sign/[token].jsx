@@ -9,9 +9,14 @@ import styles from '../../styles/sign/text.module.css'
 
 import { veSignApi } from '../../api'
 import { SignLayout } from '../../components/layouts/index'
+import Anulled from '../../components/error/Anulled'
 
 export default function sign({ client }) {
   const dispatch = useDispatch()
+
+  if (!client) {
+    return <Anulled number={2} />
+  }
 
   dispatch(setUnsignedDocument(client.document))
   dispatch(setIdDocument(client.idDocument))

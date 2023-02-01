@@ -1,14 +1,14 @@
 import Head from 'next/head'
 
 import styles from '../../styles/layouts/layout.module.css'
-import Header from '../sign/Header'
+import Header from '../admin/Header'
 
-export function SignLayout({ children }) {
+export function AdminLayout({ children }) {
   return (
     <>
       <Head>
-        <title>Sign Document</title>
-        <meta name='description' content='Sign Document' />
+        <title>Dashboard</title>
+        <meta name='description' content='Clients information' />
       </Head>
 
       <div className={styles.screenContainer}>

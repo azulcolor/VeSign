@@ -46,10 +46,11 @@ export const information = async (req, res) => {
         })
         break
       case 5:
-        return res.status(400).json({
+        return res.status(200).json({
           ok: false,
           status: 5,
           message: 'Document is already annulled',
+          client: false
         })
         break
 

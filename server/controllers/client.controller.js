@@ -3,7 +3,7 @@ import { pool } from '../database/config.js'
 export const clients = async (req, res) => {
   try {
     const [rows] = await pool.query(
-      'SELECT d.idDocument, d.fullname, d.contractNumber, d.idStatus, s.statusName, p.idType, t.documentType FROM senddocument d, documentstatus s, documenttype t, pdftemplate p WHERE d.idStatus = s.idStatus AND p.idType = t.idtype'
+      'SELECT d.idDocument, d.fullname, d.creationDate, d.contractNumber, d.idStatus, s.statusName, p.idType, t.documentType FROM senddocument d, documentstatus s, documenttype t, pdftemplate p WHERE d.idStatus = s.idStatus AND p.idType = t.idtype ORDER BY d.creationDate DESC'
     )
 
     if (rows.length === 0) {
@@ -22,6 +22,19 @@ export const clients = async (req, res) => {
     return res.status(500).json({
       ok: false,
       message: 'Error getting clients',
+    })
+  }
+}
+
+export const clientsId = async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT idDocument FROM senddocument')
+    res.status(200).json(rows)
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      message: `Error getting client's id`,
     })
   }
 }
@@ -71,10 +84,10 @@ export const options = async (req, res) => {
 
   try {
     const [status] = await pool.query(
-      'SELECT idStatus, statusName FROM documentstatus'
+      'SELECT statusName as label, idStatus as id FROM documentstatus'
     )
     const [type] = await pool.query(
-      'SELECT idType, documentType FROM documenttype'
+      'SELECT documentType as label, idType as id FROM documenttype'
     )
 
     const [idiom] = await pool.query('SELECT idIdiom, idiom FROM idiom')

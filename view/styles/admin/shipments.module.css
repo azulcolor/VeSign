@@ -1,0 +1,79 @@
+.column {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-items: center;
+  height: 90vh;
+}
+
+.list {
+  overflow: auto;
+  height: 70vh;
+  width: 46vw;
+}
+
+.list::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.element {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 2.9vh 0;
+  border-bottom: 1px solid var(--color-title);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.element:hover {
+  background-color: rgba(152, 195, 218, 0.1);
+  cursor: pointer;
+}
+
+.clients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: var(--color-paragraph);
+  font-size: var(--desktop-text);
+  font-weight: 400;
+  margin-bottom: 4vh;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  justify-self: end;
+  margin-right: 3vw;
+}
+
+.status p {
+  color: var(--color-title);
+  font-size: var(--desktop-status);
+  font-weight: 400;
+  width: 5vw;
+}
+
+.status svg {
+  width: 32px;
+  height: 32px;
+}
+
+.name {
+  color: var(--color-title);
+  font-size: var(--desktop-text);
+  justify-self: start;
+  margin-left: 2vw;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 12vw;
+}

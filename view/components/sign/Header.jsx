@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import styles from '../../styles/layouts/signLayout.module.css'
+import styles from '../../styles/layouts/layout.module.css'
 import Logo from '../general/Logo'
 import Mode from '../general/Mode'
 
