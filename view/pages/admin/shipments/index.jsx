@@ -3,8 +3,8 @@ import { useState } from 'react'
 
 import { AdminLayout } from '../../../components/layouts'
 import { fetcher } from '../../../hooks/api/fetcher'
-import Filters from '../../../components/admin/shipments/Filters/Filters'
-import ClientList from '../../../components/admin/shipments/ClientList/ClientList'
+import Filters from '../../../components/admin/shipments/filters/Filters'
+import ClientList from '../../../components/admin/shipments/clientList/ClientList'
 import styles from '../../../styles/admin/shipments.module.css'
 import dayjs from 'dayjs'
 

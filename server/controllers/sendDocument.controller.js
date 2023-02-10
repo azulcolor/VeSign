@@ -61,6 +61,9 @@ export const createSignDocument = async (req, res) => {
       [body.idAreaCode]
     )
 
+    if (body.phoneNumber) {
+
+    }
     areaCode = areaCode[0].areaCode
 
     const phoneNumber = `${areaCode}${body.phoneNumber}`
@@ -72,8 +75,6 @@ export const createSignDocument = async (req, res) => {
       body.token,
       body.idDocument,
     ])
-
-    // send email
 
     if (body.email) await sendEmail(body.email, body.fullName, body.token)
 

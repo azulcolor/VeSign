@@ -20,9 +20,9 @@ import {
 const router = Router()
 
 router.get('/', jwtSalaValidator, getSignDocuments)
-router.get('/:id', jwtSalaValidator, getSignDocument)
+router.get('/:id', getSignDocument)
 
-router.patch('/:id', jwtSalaValidator, changeState)
+router.patch('/:id', changeState)
 router.patch('/cancel/:token', jwtInstantCashValidator, cancelDocument)
 
 router.delete('/:id', jwtSalaValidator, deleteSignDocument)

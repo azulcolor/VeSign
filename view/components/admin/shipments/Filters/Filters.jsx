@@ -70,11 +70,12 @@ export default function Filters({
           <DesktopDatePicker
             label='Fecha de contrato'
             inputFormat='DD/MM/YYYY'
+            disableFuture={true}
             value={date ? date : null}
             onChange={(value) => value && setDate(value)}
             renderInput={(params) => <TextField {...params} />}
           />
-        <button onClick={() => setDate(null)}>Resetear fecha</button>
+          <button onClick={() => setDate(null)}>Resetear fecha</button>
         </Stack>
       </LocalizationProvider>
     </div>

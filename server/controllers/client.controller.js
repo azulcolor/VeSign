@@ -44,12 +44,13 @@ export const client = async (req, res) => {
 
   try {
     const [rows] = await pool.query(
-      'SELECT fullname, c.areaCode, phoneNumber, email, contractNumber, s.statusName, IF(d.idStatus = 1 or d.idStatus = 5, IF(d.template = 1, t.pdfTemplate, d.document), d.documentSigned) AS document FROM senddocument d, documentstatus s, areacode c, pdftemplate t WHERE d.idStatus = s.idStatus AND c.idAreaCode = d.idAreaCode AND d.idTemplate = t.idTemplate AND d.idDocument = ?',
+      'SELECT idDocument, fullname, c.areaCode, phoneNumber, email, contractNumber, d.idStatus, s.statusName, IF(d.idStatus = 1 or d.idStatus = 5, IF(d.template = 1, t.pdfTemplate, d.document), d.documentSigned) AS document FROM senddocument d, documentstatus s, areacode c, pdftemplate t WHERE d.idStatus = s.idStatus AND c.idAreaCode = d.idAreaCode AND d.idTemplate = t.idTemplate AND d.idDocument = ?',
       [id]
     )
     if (rows.length === 0) {
       return res.status(404).json({
         message: 'client not found',
+        client: rows
       })
     }
     return res.status(200).json({

@@ -14,6 +14,7 @@ import Anulled from '../../components/error/Anulled'
 export default function sign({ client }) {
   const dispatch = useDispatch()
 
+
   if (!client) {
     return <Anulled number={2} />
   }
