@@ -3,12 +3,10 @@ import { useState } from 'react'
 
 import { AdminLayout } from '../../../components/layouts'
 import { fetcher } from '../../../hooks/api/fetcher'
+import {useFilter, useClient, useOption} from '../../../hooks/components/admin/useFilter'
 import Filters from '../../../components/admin/shipments/filters/Filters'
 import ClientList from '../../../components/admin/shipments/clientList/ClientList'
 import styles from '../../../styles/admin/shipments.module.css'
-import dayjs from 'dayjs'
-
-const formatDate = (date) => dayjs(date).format('DD/MM/YYYY')
 
 export default function Shipments() {
   const [name, setName] = useState('')
@@ -26,31 +24,11 @@ export default function Shipments() {
   if (client.error || options.error) return <div>failed to load</div>
   if (client.isLoading || options.isLoading) return <div>loading...</div>
 
-  let filterName = client.data.clients.map((client) => client.fullname)
-  let filterContract = client.data.clients.map(
-    (client) => client.contractNumber
-  )
-  let filterStatus = options.data.options.documentStatus
-  let filterDocument = options.data.options.documentType
+  let { filterName, filterContract } = useClient(client)
 
-  filterName = [...new Set(filterName)]
-  filterContract = [...new Set(filterContract)]
+  let { filterStatus, filterDocument } = useOption(options)
 
-  let filter = client.data.clients.filter((client) =>
-    client.fullname.includes(name)
-  )
-
-  status && (filter = filter.filter((client) => client.idStatus === status))
-
-  document && (filter = filter.filter((client) => client.idType === document))
-
-  date &&
-    (filter = filter.filter(
-      (client) => formatDate(client.creationDate) === formatDate(date)
-    ))
-
-  contract &&
-    (filter = filter.filter((client) => client.contractNumber === contract))
+  let { filter } = useFilter(client, status, document, date, contract, name)
 
   return (
     <AdminLayout>
@@ -72,3 +50,5 @@ export default function Shipments() {
     </AdminLayout>
   )
 }
+
+

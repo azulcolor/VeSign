@@ -149,3 +149,18 @@
 .cancel:hover {
   background-color: #d7a645;
 }
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 1vw; 
+}
+
+.date svg {
+  cursor: pointer;
+  color: var(--color-title);
+}
+
+.date svg:hover {
+  color: var(--color-h3);
+}

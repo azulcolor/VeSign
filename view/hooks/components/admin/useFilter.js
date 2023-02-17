@@ -1,35 +1,49 @@
-import { useState } from 'react'
+import dayjs from 'dayjs'
+const formatDate = (date) => dayjs(date).format('DD/MM/YYYY')
 
-export const useFilter = async (client, options) => {
-  const [name, setName] = useState()
-  const [status, setStatus] = useState()
-  const [document, setDocument] = useState()
-
-  let filterName = client.data.clients.map((client) => client.fullname)
-  let filterStatus = options.data.options.documentStatus
-  let filterDocument = options.data.options.documentType
-
-  filterName = [...new Set(filterName)]
-
+export const useFilter = (client, status, document, date, contract, name) => {
   let filter = client.data.clients.filter((client) =>
     client.fullname.includes(name)
   )
 
-  status
-    ? (filter = filter.filter((client) => client.idStatus === status))
-    : null
+  status && (filter = filter.filter((client) => client.idStatus === status))
 
-  document
-    ? (filter = filter.filter((client) => client.idType === document))
-    : null
+  document && (filter = filter.filter((client) => client.idType === document))
+
+  date &&
+    (filter = filter.filter(
+      (client) => formatDate(client.creationDate) === formatDate(date)
+    ))
+
+  contract &&
+    (filter = filter.filter((client) => client.contractNumber === contract))
 
   return {
     filter,
-    filterName,
-    setName,
+  }
+}
+
+export const useOption = (options) => {
+  let filterStatus = options.data.options.documentStatus
+  let filterDocument = options.data.options.documentType
+
+  return {
     filterStatus,
-    setStatus,
     filterDocument,
-    setDocument,
+  }
+}
+
+export const useClient = (client) => {
+  let filterName = client.data.clients.map((client) => client.fullname)
+  filterName = [...new Set(filterName)]
+
+  let filterContract = client.data.clients.map(
+    (client) => client.contractNumber
+  )
+  filterContract = [...new Set(filterContract)]
+
+  return {
+    filterName,
+    filterContract,
   }
 }

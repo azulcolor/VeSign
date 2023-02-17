@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 
 import Button from '../../components/general/Button'
+import Anulled from '../../components/error/Anulled'
 import {
   setIdDocument,
   setUnsignedDocument,
@@ -9,11 +10,9 @@ import styles from '../../styles/sign/text.module.css'
 
 import { veSignApi } from '../../api'
 import { SignLayout } from '../../components/layouts/index'
-import Anulled from '../../components/error/Anulled'
 
 export default function sign({ client }) {
   const dispatch = useDispatch()
-
 
   if (!client) {
     return <Anulled number={2} />
