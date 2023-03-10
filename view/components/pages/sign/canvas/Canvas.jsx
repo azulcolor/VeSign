@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import Component from './component'
 import SignButton from './signButton'
-import styles from '../../../styles/general/button.module.css'
+import styles from '../../../../styles/general/button.module.css'
 
 export default function Canva() {
   const canvas = useRef('')

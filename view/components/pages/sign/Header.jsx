@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-import styles from '../../styles/layouts/layout.module.css'
-import Logo from '../general/Logo'
-import Mode from '../general/Mode'
+import styles from '../../../styles/layouts/layout.module.css'
+import Logo from '../../general/Logo'
+import Mode from '../../general/Mode'
 
 export default function Header() {
   const [mode, setMode] = useState(

@@ -70,6 +70,7 @@ export const options = async (req, res) => {
   const options = {
     documentStatus: [],
     documentType: [],
+    documentTemplate: [],
     idiom: [],
     areaCode: [],
     rol: [],
@@ -99,17 +100,21 @@ export const options = async (req, res) => {
 
     const [rol] = await pool.query('SELECT idRol, rol FROM rol')
 
+    const [template] = await pool.query('SELECT idTemplate, pdfName FROM pdftemplate')
+
     error('documentStatus', status)
     error('documentType', type)
     error('idiom', idiom)
     error('areaCode', areaCode)
     error('rol', rol)
+    error('template', template)
 
     options.documentStatus = status
     options.documentType = type
     options.idiom = idiom
     options.areaCode = areaCode
     options.rol = rol
+    options.template = template
 
     return res.status(200).json({
       ok: true,

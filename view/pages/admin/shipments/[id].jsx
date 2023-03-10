@@ -1,5 +1,5 @@
 import { veSignApi } from '../../../api'
-import Information from '../../../components/admin/shipments/information/Information'
+import Information from '../../../components/pages/admin/shipments/information/Information'
 import { AdminLayout } from '../../../components/layouts'
 import PdfViewer from '../../../components/general/document/pdfViewer'
 import styles from '../../../styles/admin/shipments.module.css'

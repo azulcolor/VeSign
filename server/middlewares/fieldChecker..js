@@ -1,13 +1,17 @@
-import { body } from 'express-validator';
+import { body } from 'express-validator'
 
 export const sendDocumentChecker = [
   body('fullName')
     .not()
     .isEmpty()
-    .withMessage('Full name is required')
+    .withMessage('Es necesario ingresar el nombre del cliente')
     .isString()
-    .withMessage('Full name must be a string')
-    .isLength({ min: 10 }),
+    .withMessage('El nombre del cliente no debe contener números')
+    .isLength(
+      { min: 10 }
+    ).withMessage(
+      'El nombre del cliente debe tener al menos 10 caracteres'
+    ),
 
   body('idUser')
     .not()
@@ -19,17 +23,22 @@ export const sendDocumentChecker = [
   body('idTemplate')
     .not()
     .isEmpty()
-    .withMessage('Id template is required')
+    .withMessage('Es necesario seleccionar un template')
     .isInt()
     .withMessage('Id template must be a number'),
 
   body('idIdiom')
     .not()
     .isEmpty()
-    .withMessage('Id idiom is required')
+    .withMessage('Es necesario seleccionar un idioma')
     .isInt()
     .withMessage('Id idiom must be a number'),
-];
+
+  body('contractNumber')
+    .not()
+    .isEmpty()
+    .withMessage('Es necesario ingresar el número de contrato'),
+]
 
 export const createUserChecker = [
   body('userName')
@@ -72,4 +81,4 @@ export const createUserChecker = [
     .withMessage('User Role is required')
     .isInt()
     .withMessage('User Role must be a number'),
-];
+]

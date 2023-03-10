@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-import { setSignedDocument, setSign } from '../../../provider/sign/documentSlice'
-import { veSignApi } from '../../../api'
-import styles from '../../../styles/general/button.module.css'
+import { setSignedDocument, setSign } from '../../../../provider/sign/documentSlice'
+import { veSignApi } from '../../../../api'
+import styles from '../../../../styles/general/button.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectDocument } from '../../../provider/sign/documentSlice'
+import { selectDocument } from '../../../../provider/sign/documentSlice'
 
 export default function SignButton({ isSigned, screenWidth, canvas }) {
   const dispatch = useDispatch()

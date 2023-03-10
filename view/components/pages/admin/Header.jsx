@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-import styles from '../../styles/layouts/layout.module.css'
-import Logo from '../general/Logo'
+import styles from '../../../styles/layouts/layout.module.css'
+import Logo from '../../general/Logo'
 
 export default function Header() {
   useEffect(() => {

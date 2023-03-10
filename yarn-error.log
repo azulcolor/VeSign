@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Cobranza VCM\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @mui/x-date-pickers
+  C:\Program Files\nodejs\node.exe C:\Users\Cobranza VCM\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add Cookies
 
 PATH: 
   C:\Program Files\WindowsApps\Microsoft.PowerShell_7.3.2.0_x64__8wekyb3d8bbwe;C:\Users\starj\Downloads\WINDOWS.X64_193000_db_home\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Grails\grails-2.5.0\bin;C:\Program Files\PuTTY\;C:\Program Files\LibreOffice\program\;C:\Program Files\Java\jdk1.8.0_202\bin;C:\Program Files\LibreOffice\;C:\Program Files (x86)\Groovy\bin;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\CobranzaVCM\AppData\Local\Microsoft\WindowsApps;C:\Users\Cobranza VCM\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Cobranza VCM\AppData\Roaming\npm;C:\Users\Cobranza VCM\AppData\Local\Yarn\bin\create-vite;C:\Users\CobranzaVCM\AppData\Local\Programs\oh-my-posh\bin
@@ -14,7 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\CobranzaVCM\Desktop\vesign\node_modules\bcrypt\lib\binding\napi-v3\bcrypt_lib.node'
+  Error: https://registry.yarnpkg.com/Cookies: Not found
+      at Request.params.callback [as _callback] (C:\Users\CobranzaVCM\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
+      at Request.self.callback (C:\Users\CobranzaVCM\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (C:\Users\CobranzaVCM\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (C:\Users\CobranzaVCM\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -47,12 +57,14 @@ npm manifest:
       "@google-cloud/local-auth": "^2.1.1",
       "@mui/icons-material": "^5.11.0",
       "@mui/material": "^5.11.1",
+      "@mui/x-date-pickers": "^5.0.16",
       "@next/font": "^13.0.7",
       "@reduxjs/toolkit": "^1.9.1",
       "axios": "^1.2.1",
       "bcrypt": "^5.1.0",
       "bcryptjs": "^2.4.3",
       "cors": "^2.8.5",
+      "dayjs": "^1.11.7",
       "dotenv": "^16.0.3",
       "express": "^4.18.2",
       "express-validator": "^6.14.2",
@@ -356,6 +368,13 @@ Lockfile:
     dependencies:
       regenerator-runtime "^0.13.11"
   
+  "@babel/runtime@^7.18.9", "@babel/runtime@^7.20.7":
+    version "7.20.13"
+    resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.13.tgz#7055ab8a7cff2b8f6058bf6ae45ff84ad2aded4b"
+    integrity sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==
+    dependencies:
+      regenerator-runtime "^0.13.11"
+  
   "@babel/template@^7.18.10", "@babel/template@^7.20.7", "@babel/template@^7.3.3":
     version "7.20.7"
     resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.20.7.tgz#a15090c2839a83b02aa996c0b4994005841fd5a8"
@@ -394,6 +413,39 @@ Lockfile:
     version "0.2.3"
     resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
     integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
+  
+  "@date-io/core@^2.15.0", "@date-io/core@^2.16.0":
+    version "2.16.0"
+    resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.16.0.tgz#7871bfc1d9bca9aa35ad444a239505589d0f22f6"
+    integrity sha512-DYmSzkr+jToahwWrsiRA2/pzMEtz9Bq1euJwoOuYwuwIYXnZFtHajY2E6a1VNVDc9jP8YUXK1BvnZH9mmT19Zg==
+  
+  "@date-io/date-fns@^2.15.0":
+    version "2.16.0"
+    resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.16.0.tgz#bd5e09b6ecb47ee55e593fc3a87e7b2caaa3da40"
+    integrity sha512-bfm5FJjucqlrnQcXDVU5RD+nlGmL3iWgkHTq3uAZWVIuBu6dDmGa3m8a6zo2VQQpu8ambq9H22UyUpn7590joA==
+    dependencies:
+      "@date-io/core" "^2.16.0"
+  
+  "@date-io/dayjs@^2.15.0":
+    version "2.16.0"
+    resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-2.16.0.tgz#0d2c254ad8db1306fdc4b8eda197cb53c9af89dc"
+    integrity sha512-y5qKyX2j/HG3zMvIxTobYZRGnd1FUW2olZLS0vTj7bEkBQkjd2RO7/FEwDY03Z1geVGlXKnzIATEVBVaGzV4Iw==
+    dependencies:
+      "@date-io/core" "^2.16.0"
+  
+  "@date-io/luxon@^2.15.0":
+    version "2.16.1"
+    resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.16.1.tgz#b08786614cb58831c729a15807753011e4acb966"
+    integrity sha512-aeYp5K9PSHV28946pC+9UKUi/xMMYoaGelrpDibZSgHu2VWHXrr7zWLEr+pMPThSs5vt8Ei365PO+84pCm37WQ==
+    dependencies:
+      "@date-io/core" "^2.16.0"
+  
+  "@date-io/moment@^2.15.0":
+    version "2.16.1"
+    resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.16.1.tgz#ec6e0daa486871e0e6412036c6f806842a0eeed4"
+    integrity sha512-JkxldQxUqZBfZtsaCcCMkm/dmytdyq5pS1RxshCQ4fHhsvP5A7gSqPD22QbVXMcJydi3d3v1Y8BQdUKEuGACZQ==
+    dependencies:
+      "@date-io/core" "^2.16.0"
   
   "@emotion/babel-plugin@^11.10.5":
     version "11.10.5"
@@ -858,6 +910,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@mui/types/-/types-7.2.3.tgz#06faae1c0e2f3a31c86af6f28b3a4a42143670b9"
     integrity sha512-tZ+CQggbe9Ol7e/Fs5RcKwg/woU+o8DCtOnccX6KmbBc7YrfqMYEYuaIcXHuhpT880QwNkZZ3wQwvtlDFA2yOw==
   
+  "@mui/utils@^5.10.3":
+    version "5.11.2"
+    resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-5.11.2.tgz#29764311acb99425159b159b1cb382153ad9be1f"
+    integrity sha512-AyizuHHlGdAtH5hOOXBW3kriuIwUIKUIgg0P7LzMvzf6jPhoQbENYqY6zJqfoZ7fAWMNNYT8mgN5EftNGzwE2w==
+    dependencies:
+      "@babel/runtime" "^7.20.7"
+      "@types/prop-types" "^15.7.5"
+      "@types/react-is" "^16.7.1 || ^17.0.0"
+      prop-types "^15.8.1"
+      react-is "^18.2.0"
+  
   "@mui/utils@^5.11.1":
     version "5.11.1"
     resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-5.11.1.tgz#8d12b3c2245efd9a1c0595658dcb4c86f6625206"
@@ -868,6 +931,24 @@ Lockfile:
       "@types/react-is" "^16.7.1 || ^17.0.0"
       prop-types "^15.8.1"
       react-is "^18.2.0"
+  
+  "@mui/x-date-pickers@^5.0.16":
+    version "5.0.16"
+    resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-5.0.16.tgz#2ee6263e9ba4e0089a664f0bcb8ffaaff2c392d4"
+    integrity sha512-dfnz9e/zyYXMFH08PKhYHatBLzCt3hnEmbReaKTW+9FXLeZ8hTm4wM3IZi5kplEZuV5aVBJGzynwQ1o3EBoxoA==
+    dependencies:
+      "@babel/runtime" "^7.18.9"
+      "@date-io/core" "^2.15.0"
+      "@date-io/date-fns" "^2.15.0"
+      "@date-io/dayjs" "^2.15.0"
+      "@date-io/luxon" "^2.15.0"
+      "@date-io/moment" "^2.15.0"
+      "@mui/utils" "^5.10.3"
+      "@types/react-transition-group" "^4.4.5"
+      clsx "^1.2.1"
+      prop-types "^15.7.2"
+      react-transition-group "^4.4.5"
+      rifm "^0.12.1"
   
   "@next/env@13.1.0":
     version "13.1.0"
@@ -1684,6 +1765,11 @@ Lockfile:
     version "3.1.1"
     resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
     integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
+  
+  dayjs@^1.11.7:
+    version "1.11.7"
+    resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
+    integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
   
   debug@2.6.9:
     version "2.6.9"
@@ -3511,7 +3597,7 @@ Lockfile:
       kleur "^3.0.3"
       sisteransi "^1.0.5"
   
-  prop-types@^15.6.2, prop-types@^15.8.1:
+  prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
     version "15.8.1"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
     integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -3734,6 +3820,11 @@ Lockfile:
       is-core-module "^2.9.0"
       path-parse "^1.0.7"
       supports-preserve-symlinks-flag "^1.0.0"
+  
+  rifm@^0.12.1:
+    version "0.12.1"
+    resolved "https://registry.yarnpkg.com/rifm/-/rifm-0.12.1.tgz#8fa77f45b7f1cda2a0068787ac821f0593967ac4"
+    integrity sha512-OGA1Bitg/dSJtI/c4dh90svzaUPt228kzFsUkJbtA2c964IqEAwWXeL9ZJi86xWv3j5SMqRvGULl7bA6cK0Bvg==
   
   rimraf@^3.0.2:
     version "3.0.2"

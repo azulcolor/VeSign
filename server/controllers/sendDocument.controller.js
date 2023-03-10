@@ -87,6 +87,7 @@ export const createSignDocument = async (req, res) => {
       ok: true,
       message: 'Document created',
       token: body.token,
+      id: body.idDocument,
     })
   } catch (error) {
     console.log(error)

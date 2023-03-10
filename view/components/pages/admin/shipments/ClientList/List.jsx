@@ -1,5 +1,5 @@
 import Icon from './Icon'
-import styles from '../../../../styles/admin/shipments.module.css'
+import styles from '../../../../../styles/admin/shipments.module.css'
 import Link from 'next/link'
 
 export default function List({ client }) {

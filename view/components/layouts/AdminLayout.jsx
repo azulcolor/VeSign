@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import styles from '../../styles/layouts/layout.module.css'
-import Header from '../admin/Header'
+import Header from '../pages/admin/Header'
 
 export function AdminLayout({ children }) {
   return (
@@ -13,7 +13,7 @@ export function AdminLayout({ children }) {
 
       <div className={styles.screenContainer}>
         <Header />
-        {children}
+        <div className={styles.children}>{children}</div>
       </div>
     </>
   )

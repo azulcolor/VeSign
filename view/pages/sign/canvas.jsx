@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import Canvas from '../../components/sign/canvas/Canvas'
+import Canvas from '../../components/pages/sign/canvas/Canvas'
 import styles from '../../styles/sign/text.module.css'
 import Error from '../../components/error/Error'
 

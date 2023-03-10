@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
-import styles from '../../../../styles/admin/shipments.module.css'
+import styles from '../../../../../styles/admin/shipments.module.css'
 import Filter from './Filter'
 import Date from './Date'
 

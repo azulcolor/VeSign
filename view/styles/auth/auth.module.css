@@ -1,0 +1,85 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8vw;
+  margin-top: 1.5vh;
+}
+
+.logo li {
+  margin: 0;
+  color: #607d8b;
+  list-style: none;
+}
+
+.veSign {
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.separation {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.capital {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.session {
+    margin-top: 6vh;
+  font-size: 20px;
+  font-weight: 300;
+  color: #06389d;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5vh;
+}
+
+.input {
+    width: 17vw;
+    height: 5vh;
+    border-radius: 12px 12px 0 0;
+    border : 1px solid rgba(0, 0, 0, 0.5);
+    padding-left: 16px;
+}
+
+.input2 {
+    width: 17vw;
+    height: 5vh;
+    border-radius: 0 0 12px 12px;
+    border : 1px solid rgba(0, 0, 0, 0.5);
+    padding-left: 16px;
+}
+
+.button {
+    width: 13vw;
+    height: 5vh;
+    border-radius: 8px;
+    background-color: #4a88ff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 3vh;
+}
+
+.error {
+    font-size: 14px;
+    color: #f44336;
+    margin-top: 1vh;
+}
+

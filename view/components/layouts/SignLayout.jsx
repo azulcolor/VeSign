@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import styles from '../../styles/layouts/layout.module.css'
-import Header from '../sign/Header'
+import Header from '../pages/sign/Header'
 
 export function SignLayout({ children }) {
   return (

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import Data from './Data'
 import Status from './Status'
-import styles from '../../../../styles/admin/shipments.module.css'
+import styles from '../../../../../styles/admin/shipments.module.css'
 import Button from './Button'
 
 export default function Information({ client }) {

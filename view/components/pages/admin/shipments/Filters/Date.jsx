@@ -1,7 +1,7 @@
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import RestoreIcon from '@mui/icons-material/Restore'
 import TextField from '@mui/material/TextField'
-import styles from '../../../../styles/admin/shipments.module.css'
+import styles from '../../../../../styles/admin/shipments.module.css'
 
 export default function Date({ date, setDate }) {
   return (

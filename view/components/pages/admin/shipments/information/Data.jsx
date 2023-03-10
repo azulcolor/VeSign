@@ -1,4 +1,4 @@
-import styles from '../../../../styles/admin/shipments.module.css'
+import styles from '../../../../../styles/admin/shipments.module.css'
 
 export default function Data({ title, info }) {
   return (

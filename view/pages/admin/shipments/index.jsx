@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { AdminLayout } from '../../../components/layouts'
 import { fetcher } from '../../../hooks/api/fetcher'
 import {useFilter, useClient, useOption} from '../../../hooks/components/admin/useFilter'
-import Filters from '../../../components/admin/shipments/filters/Filters'
-import ClientList from '../../../components/admin/shipments/clientList/ClientList'
+import Filters from '../../../components/pages/admin/shipments/filters/Filters'
+import ClientList from '../../../components/pages/admin/shipments/clientList/ClientList'
 import styles from '../../../styles/admin/shipments.module.css'
 
 export default function Shipments() {

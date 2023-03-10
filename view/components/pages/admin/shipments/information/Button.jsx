@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import styles from '../../../../styles/admin/shipments.module.css'
+import styles from '../../../../../styles/admin/shipments.module.css'
 
 export default function Button({ idStatus, setIdStatus, idDocument }) {
   const post = async (status, idDocument) => {
