@@ -1,9 +1,12 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import Cookies from 'js-cookie'
 
 export const jwtUserValidator = (req, res, next) => {
   // x-token headers
-  const token = req.header('x-token')
+
+  const token = Cookies.get('token')
+  console.log(token)
 
   if (!token) {
     return res.status(401).json({

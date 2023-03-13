@@ -103,6 +103,9 @@ export const tokenValidator = async (req, res) => {
     })
   } catch (error) {
     console.log(error)
+    res.status(500).json({
+      ok: false,
+    })
   }
 }
 

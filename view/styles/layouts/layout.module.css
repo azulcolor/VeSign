@@ -88,6 +88,19 @@
     justify-content: center;
     height: 80vh;
   }
+  .logout {
+    font-size: var(--desktop-status);
+    color: var(--color-background);
+    background-color: rgb(216, 58, 58);
+    border-radius: 16px;
+    padding: 0.5vw 1vw;
+    margin-left: 1vw;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .logout:hover {
+    background-color: rgb(255, 40, 40);
+  }
 }
 
 @media (max-width: 767px) {
