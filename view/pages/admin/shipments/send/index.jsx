@@ -8,8 +8,9 @@ import Progress from '../../../../components/pages/admin/shipments/form/Progress
 import { AdminLayout } from '../../../../components/layouts'
 import styles from '../../../../styles/admin/shipments.module.css'
 import Error from '../../../../components/pages/admin/shipments/form/Error'
+import authenticatedRoute from '../../../../components/pages/auth/authenticatedRoute'
 
-export default function Send() {
+function Send() {
   const [progress, setProgress] = useState(false)
   const [contractNumber, setContractNumber] = useState()
   const [template, setTemplate] = useState()
@@ -74,3 +75,6 @@ export default function Send() {
     </AdminLayout>
   )
 }
+
+export default authenticatedRoute(Send, { pathAterFailure: '/auth/login' })
+// export default authenticatedRoute(Shipment, { pathAterFailure: '/auth/login' })

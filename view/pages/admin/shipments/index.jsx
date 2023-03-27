@@ -3,12 +3,17 @@ import { useState } from 'react'
 
 import { AdminLayout } from '../../../components/layouts'
 import { fetcher } from '../../../hooks/api/fetcher'
-import {useFilter, useClient, useOption} from '../../../hooks/components/admin/useFilter'
+import {
+  useFilter,
+  useClient,
+  useOption,
+} from '../../../hooks/components/admin/useFilter'
 import Filters from '../../../components/pages/admin/shipments/filters/Filters'
 import ClientList from '../../../components/pages/admin/shipments/clientList/ClientList'
 import styles from '../../../styles/admin/shipments.module.css'
+import authenticatedRoute from '../../../components/pages/auth/authenticatedRoute'
 
-export default function Shipments() {
+function Shipments() {
   const [name, setName] = useState('')
   const [status, setStatus] = useState()
   const [document, setDocument] = useState()
@@ -51,4 +56,4 @@ export default function Shipments() {
   )
 }
 
-
+export default authenticatedRoute(Shipments, { pathAterFailure: '/auth/login' })

@@ -80,10 +80,8 @@
 
 .row {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 30vw;
-  margin-top: 24px;
+  margin-top: 12vh;
 }
 
 .dataColumn {

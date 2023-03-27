@@ -56,14 +56,13 @@ export const createSignDocument = async (req, res) => {
 
     body.idDocument = document.insertId
 
+    if (!body.idAreaCode) body.idAreaCode = 1
+
     let [areaCode] = await pool.query(
       'SELECT areaCode FROM areacode WHERE idAreaCode = ?',
       [body.idAreaCode]
     )
 
-    if (body.phoneNumber) {
-
-    }
     areaCode = areaCode[0].areaCode
 
     const phoneNumber = `${areaCode}${body.phoneNumber}`

@@ -100,6 +100,7 @@ export const tokenValidator = async (req, res) => {
 
     res.status(201).json({
       ok: true,
+      token
     })
   } catch (error) {
     console.log(error)
@@ -107,6 +108,10 @@ export const tokenValidator = async (req, res) => {
       ok: false,
     })
   }
+}
+
+export const logged = async (req, res) => {
+  res.status(201).json({ ok: true, message: 'logged' })
 }
 
 export const getUser = async (req, res) => {

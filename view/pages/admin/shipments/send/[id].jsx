@@ -3,8 +3,9 @@ import { AdminLayout } from '../../../../components/layouts'
 import Button from '../../../../components/general/Button'
 import Link from 'next/link'
 import styles from '../../../../styles/admin/shipments.module.css'
+import authenticatedRoute from '../../../../components/pages/auth/authenticatedRoute'
 
-export default function sendMessage() {
+function sendMessage() {
   const router = useRouter()
   const { id } = router.query
 
@@ -19,10 +20,16 @@ export default function sendMessage() {
           quiere realizar una nueva encuesta presione Realizar envío
         </p>
         <div className={styles.messageButtons}>
-          <Link href={`/admin/shipments/${id}`} className={styles.messageView}>Ver envío</Link>
+          <Link href={`/admin/shipments/${id}`} className={styles.messageView}>
+            Ver envío
+          </Link>
           <Button link={`/admin/shipments/send`}>Realizar envío</Button>
         </div>
       </div>
     </AdminLayout>
   )
 }
+
+export default authenticatedRoute(sendMessage, {
+  pathAterFailure: '/auth/login',
+})

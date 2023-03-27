@@ -3,8 +3,9 @@ import Information from '../../../components/pages/admin/shipments/information/I
 import { AdminLayout } from '../../../components/layouts'
 import PdfViewer from '../../../components/general/document/pdfViewer'
 import styles from '../../../styles/admin/shipments.module.css'
+import authenticatedRoute from '../../../components/pages/auth/authenticatedRoute'
 
-export default function Shipment({ client }) {
+function Shipment({ client }) {
   return (
     <AdminLayout>
       <div className={styles.row}>
@@ -40,3 +41,5 @@ export const getStaticProps = async ({ params }) => {
       revalidate: 1,
     }
 }
+
+export default authenticatedRoute(Shipment, { pathAterFailure: '/auth/login' })

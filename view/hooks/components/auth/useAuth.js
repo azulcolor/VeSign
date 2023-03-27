@@ -1,24 +1,34 @@
 import Cookies from 'js-cookie'
-import { useRouter } from 'next/router'
+import { veSignApi } from '../../../api'
 
 const useAuth = () => {
-  const router = useRouter()
   const handleLogout = () => {
     Cookies.remove('token')
     window.location.href = '/auth/login'
   }
-  
-  const isLogged = () => {
+
+  const isLogged = async () => {
     const token = Cookies.get('token')
-    if (!token) {
+    try {
+      const { data } = await veSignApi.get('auth/logged', {
+        headers: {
+          'x-token': token,
+        },
+      })
+      console.log( data )
+      const { ok } = data
+      if (!ok) {
+        return false
+      }
+      return true
+    } catch (error) {
       return false
     }
-    return true
   }
 
   return {
     handleLogout,
-    isLogged
+    isLogged,
   }
 }
 

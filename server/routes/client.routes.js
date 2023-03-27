@@ -11,7 +11,7 @@ import { jwtSalaValidator } from '../middlewares/jwtValidator.js'
 
 const router = Router()
 
-router.get('/', clients)
+router.get('/',jwtSalaValidator, clients)
 router.get('/options', options)
 router.get('/client/:id',  client)
 router.get('/instantCash/:token', jwtSalaValidator, instantCash)

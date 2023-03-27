@@ -1,7 +1,9 @@
 import { Router } from 'express'
 
 import { fieldValidator } from '../middlewares/fieldValidator.js'
-import { jwtUserValidator, jwtSalaValidator,
+import {
+  jwtUserValidator,
+  jwtSalaValidator,
 } from '../middlewares/jwtValidator.js'
 import { createUserChecker } from '../middlewares/fieldChecker..js'
 import {
@@ -12,6 +14,7 @@ import {
   deleteUser,
   userLogin,
   tokenValidator,
+  logged,
 } from '../controllers/auth.controller.js'
 
 const router = Router()
@@ -27,5 +30,6 @@ router.get('/userToken', jwtUserValidator, tokenValidator)
 router.get('/user/:id', jwtSalaValidator, getUser)
 router.patch('/user/:id', jwtSalaValidator, updateUser)
 router.delete('/user/:id', jwtSalaValidator, deleteUser)
+router.get('/logged', jwtUserValidator, logged)
 
 export default router
