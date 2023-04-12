@@ -62,6 +62,33 @@ export const sendDocument = async (
   }
 }
 
+export const updateUser = async (information, id) => {
+  try {
+    const res = await veSignApi.patch(`/auth/user/${id}`, information, {
+      headers: {
+        'x-token': token,
+      },
+    })
+    console.log(res)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const deleteUser = async (id) => {
+  console.log(id)
+  try {
+    const res = await veSignApi.delete(`/auth/user/${id}`, {
+      headers: {
+        'x-token': token,
+      },
+    })
+    console.log(res)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const login = async (userName, userPassword, e, setError) => {
   e.preventDefault()
   try {

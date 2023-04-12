@@ -6,7 +6,7 @@ export default function Button({ idStatus, setIdStatus, idDocument }) {
   const post = async (status, idDocument) => {
     setIdStatus(status)
     await axios.patch(`http://localhost:3000/api/sendDocument/${idDocument}`, {
-      idStatus,
+      idStatus: status,
     })
   }
 

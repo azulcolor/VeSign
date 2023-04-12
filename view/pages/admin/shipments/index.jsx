@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { AdminLayout } from '../../../components/layouts'
 import { fetcher } from '../../../hooks/api/fetcher'
 import {
-  useFilter,
+  useFilterClient,
   useClient,
   useOption,
 } from '../../../hooks/components/admin/useFilter'
@@ -29,11 +29,13 @@ function Shipments() {
   if (client.error || options.error) return <div>failed to load</div>
   if (client.isLoading || options.isLoading) return <div>loading...</div>
 
+  console.log(options)
+
   let { filterName, filterContract } = useClient(client)
 
   let { filterStatus, filterDocument } = useOption(options)
 
-  let { filter } = useFilter(client, status, document, date, contract, name)
+  let { filter } = useFilterClient(client, status, document, date, contract, name)
 
   return (
     <AdminLayout>

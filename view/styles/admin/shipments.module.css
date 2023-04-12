@@ -10,6 +10,8 @@
   overflow: auto;
   height: 70vh;
   width: 46vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .list::-webkit-scrollbar {
@@ -18,6 +20,7 @@
 
 .element {
   display: grid;
+  width: 45vw;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: center;
@@ -175,6 +178,15 @@
   width: 17vw;
 }
 
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5vw;
+  margin: 10%;
+}
+
 .progress {
   display: flex;
   align-items: center;
@@ -224,7 +236,17 @@
 .rightArrow {
   color: var(--color-h3);
   cursor: pointer;
-  font-size: 40px;
+}
+
+.delete {
+  font-size: 30px;
+  margin-left: 24px;
+}
+
+.delete:hover {
+  color: rgb(250, 97, 97);
+  cursor: pointer;
+  font-size: 30px;
 }
 
 .rightArrow:hover {
@@ -276,6 +298,13 @@
   text-align: center;
 }
 
+.editMessage {
+  color: var(--color-title);
+  font-size: var(--desktop-text);
+  text-align: center;
+  margin-top: 3vh;
+}
+
 .messageButtons {
   display: flex;
   align-items: center;
@@ -289,5 +318,15 @@
   font-size: var(--desktop-h3);
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
 
-
+.close {
+  font-size: var(--desktop-h3);
+  cursor: pointer;
+}

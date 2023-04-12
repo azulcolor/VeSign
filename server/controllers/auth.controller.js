@@ -4,7 +4,9 @@ import { generateUserJWT } from '../helpers/jwt.js'
 
 export const getUsers = async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM users')
+    const [rows] = await pool.query(
+      'SELECT idUser, userName, userEmail, userPassword, fullName, s.idRol, rol FROM rol r, users s WHERE r.idRol = s.idRol'
+    )
 
     res.status(201).json({
       ok: true,
@@ -100,7 +102,7 @@ export const tokenValidator = async (req, res) => {
 
     res.status(201).json({
       ok: true,
-      token
+      token,
     })
   } catch (error) {
     console.log(error)
@@ -119,9 +121,60 @@ export const getUser = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
-  res.status(201).json({ ok: true, message: 'updateUser' })
+  try {
+    const { id } = req.params
+    const { body } = req
+
+    if (!id) {
+      return res.status(400).json({
+        ok: false,
+        message: 'No id provided',
+      })
+    }
+
+    //Encrypt password
+    if (body.userPassword !== undefined) {
+      const salt = bcrypt.genSaltSync()
+      body.userPassword = bcrypt.hashSync(body.userPassword, salt)
+    }
+
+    await pool.query('UPDATE users SET ? WHERE idUser = ?', [body, id])
+
+    res.status(201).json({
+      ok: true,
+      message: 'User updated',
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      message: 'Error updating user',
+    })
+  }
 }
 
 export const deleteUser = async (req, res) => {
-  res.status(201).json({ ok: true, message: 'deleteUser' })
+  try {
+    const { id } = req.params
+
+    if (!id) {
+      return res.status(400).json({
+        ok: false,
+        message: 'No id provided',
+      })
+    }
+
+    await pool.query('DELETE FROM users WHERE idUser = ?', [id])
+
+    res.status(201).json({
+      ok: true,
+      message: 'User deleted',
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      message: 'Error deleting user',
+    })
+  }
 }

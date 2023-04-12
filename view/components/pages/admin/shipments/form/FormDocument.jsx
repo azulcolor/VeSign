@@ -6,7 +6,7 @@ import styles from '../../../../../styles/admin/shipments.module.css'
 
 export default function FormDocument(props) {
   return (
-    <div className={styles.form}>
+    <div>
       <TextField
         required
         fullWidth

@@ -15,31 +15,19 @@ function Shipment({ client }) {
     </AdminLayout>
   )
 }
-export const getStaticPaths = async () => {
-  const { data } = await veSignApi.get('client/idClient')
 
-  return {
-    paths: data.map(({ idDocument }) => ({
-      params: { id: idDocument.toString() },
-    })),
-    fallback: 'blocking',
-  }
-}
-
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   let { id } = params
   id = parseInt(id)
 
-  
-    const { data } = await veSignApi.get(`client/client/${id}`)
-    const { client } = data
+  const { data } = await veSignApi.get(`client/client/${id}`)
+  const { client } = data
 
-    return {
-      props: {
-        client,
-      },
-      revalidate: 1,
-    }
+  return {
+    props: {
+      client,
+    },
+  }
 }
 
 export default authenticatedRoute(Shipment, { pathAterFailure: '/auth/login' })
