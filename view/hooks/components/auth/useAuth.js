@@ -15,7 +15,6 @@ const useAuth = () => {
           'x-token': token,
         },
       })
-      console.log( data )
       const { ok } = data
       if (!ok) {
         return false

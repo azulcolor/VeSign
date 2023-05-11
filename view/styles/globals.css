@@ -1,5 +1,5 @@
 [data-theme='light'] {
-  --color-background: #F5F5FA;
+  --color-background: #f5f5fa;
   --color-border: #1f2020;
   --color-title: #607d8b;
   --color-h3: #4a88ff;
@@ -42,6 +42,10 @@
   --mobile-status: 13px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -53,6 +57,10 @@ body {
   margin: 0;
   background-color: var(--color-background);
   width: 100%;
+}
+
+a {
+  text-decoration: none;
 }
 
 .react-pdf__Page {
@@ -97,7 +105,6 @@ button {
 }
 
 @media screen and (min-width: 1024px) {
-
   .signatureCanvas {
     border-radius: 8px 8px 0 0;
     border: 0.5px solid var(--color-border);

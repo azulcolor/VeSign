@@ -7,7 +7,7 @@ export default function ClientList({ clients }) {
       <h1 className={styles.title}>Clientes</h1>
       <div className={styles.list}>
         {clients.map((client) => (
-          <List client={client} />
+          <List client={client} key={client.idDocument}/>
         ))}
       </div>
     </div>

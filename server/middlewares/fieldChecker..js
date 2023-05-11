@@ -7,11 +7,8 @@ export const sendDocumentChecker = [
     .withMessage('Es necesario ingresar el nombre del cliente')
     .isString()
     .withMessage('El nombre del cliente no debe contener números')
-    .isLength(
-      { min: 10 }
-    ).withMessage(
-      'El nombre del cliente debe tener al menos 10 caracteres'
-    ),
+    .isLength({ min: 10 })
+    .withMessage('El nombre del cliente debe tener al menos 10 caracteres'),
 
   body('idUser')
     .not()
@@ -44,41 +41,68 @@ export const createUserChecker = [
   body('userName')
     .not()
     .isEmpty()
-    .withMessage('User Name is required')
+    .withMessage('Ingrese un nombre de usuario')
     .isString()
-    .withMessage('User Name must be a string')
+    .withMessage('El nombre de usuario no debe contener números')
     .isLength({ min: 6 })
-    .withMessage('User Name must be at least 6 characters'),
+    .withMessage('El nombre de usuario debe tener al menos 6 caracteres'),
 
   body('userEmail')
     .not()
     .isEmpty()
-    .withMessage('User Email is required')
+    .withMessage('Ingrese un correo electrónico')
     .isEmail()
-    .withMessage('User Email must be a valid email'),
+    .withMessage('Ingrese un correo electrónico válido'),
 
   body('userPassword')
     .not()
     .isEmpty()
-    .withMessage('User Password is required')
+    .withMessage('Ingresa una contraseña')
     .isString()
-    .withMessage('User Password must be a string')
+    .withMessage('La contraseña debe ser texto')
     .isLength({ min: 6 })
-    .withMessage('User Password must be at least 6 characters'),
+    .withMessage('La contraseña debe tener al menos 6 caracteres'),
 
   body('fullName')
     .not()
     .isEmpty()
-    .withMessage('Full name is required')
+    .withMessage('El nombre completo es requerido')
     .isString()
-    .withMessage('Full name must be a string')
+    .withMessage('El nombre completo no debe contener números')
     .isLength({ min: 10 })
-    .withMessage('Full name must be at least 10 characters'),
+    .withMessage('El nombre completo debe tener al menos 10 caracteres'),
 
   body('idRol')
     .not()
     .isEmpty()
-    .withMessage('User Role is required')
+    .withMessage('El rol es requerido')
     .isInt()
-    .withMessage('User Role must be a number'),
+    .withMessage('El rol debe ser un número'),
+]
+
+export const createTemplateChecker = [
+  body('pdfName')
+    .not()
+    .isEmpty()
+    .withMessage('Es necesario ingresar el nombre del template')
+    .isString()
+    .withMessage('El nombre del template debe contener letras')
+    .isLength({ min: 2 })
+    .withMessage('El nombre del template debe tener al menos 2 caracteres'),
+
+  body('pdfTemplate')
+    .not()
+    .isEmpty()
+    .withMessage('Por favor sube un template')
+    .isString()
+    .withMessage('Es inválido el template')
+    .isLength({ min: 90 })
+    .withMessage('Sube un pdf valido'),
+
+  body('idType')
+    .not()
+    .isEmpty()
+    .withMessage('Es necesario seleccionar un tipo de documento')
+    .isInt()
+    .withMessage('El tipo de documento debe ser un número'),
 ]

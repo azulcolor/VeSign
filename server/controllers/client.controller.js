@@ -3,7 +3,7 @@ import { pool } from '../database/config.js'
 export const clients = async (req, res) => {
   try {
     const [rows] = await pool.query(
-      'SELECT d.idDocument, d.fullname, d.creationDate, d.contractNumber, d.idStatus, s.statusName, p.idType, t.documentType FROM senddocument d, documentstatus s, documenttype t, pdftemplate p WHERE d.idStatus = s.idStatus AND p.idType = t.idtype ORDER BY d.creationDate DESC'
+      'SELECT DISTINCT d.idDocument, d.fullname, d.creationDate, d.contractNumber, d.idStatus, s.statusName, p.idType, t.documentType FROM senddocument d, documentstatus s, documenttype t, pdftemplate p WHERE d.idStatus = s.idStatus AND d.idTemplate = p.idTemplate AND  p.idType = t.idtype ORDER BY d.creationDate DESC'
     )
 
     if (rows.length === 0) {
@@ -50,7 +50,7 @@ export const client = async (req, res) => {
     if (rows.length === 0) {
       return res.status(404).json({
         message: 'client not found',
-        client: rows
+        client: rows,
       })
     }
     return res.status(200).json({
@@ -100,7 +100,9 @@ export const options = async (req, res) => {
 
     const [rol] = await pool.query('SELECT idRol, rol FROM rol')
 
-    const [template] = await pool.query('SELECT idTemplate, pdfName FROM pdftemplate')
+    const [template] = await pool.query(
+      'SELECT pdfName AS label, idTemplate AS id FROM pdftemplate'
+    )
 
     error('documentStatus', status)
     error('documentType', type)

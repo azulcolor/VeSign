@@ -11,6 +11,7 @@ import {
   useFilterUser,
   useUser,
 } from '../../../hooks/components/admin/useFilter'
+import Link from 'next/link'
 
 function Users() {
   const [fullName, setFullName] = useState('')
@@ -26,7 +27,6 @@ function Users() {
 
   return (
     <AdminLayout>
-      <p style={{'width': '60vw'}}>Crear usuario</p>
       <div className={styles.column}>
         <UsersFilter
           fullname={filterName}

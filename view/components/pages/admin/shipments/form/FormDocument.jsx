@@ -4,7 +4,15 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 import styles from '../../../../../styles/admin/shipments.module.css'
 
-export default function FormDocument(props) {
+export default function FormDocument({
+  setProgress,
+  options,
+  formData,
+  setFormData,
+  send,
+}) {
+  const { contractNumber, template } = formData
+
   return (
     <div>
       <TextField
@@ -13,8 +21,10 @@ export default function FormDocument(props) {
         id='contractNumber'
         label='Número de documento'
         variant='standard'
-        value={props.contractNumber}
-        onChange={(e) => props.setContractNumber(e.target.value)}
+        value={contractNumber}
+        onChange={e =>
+          setFormData({ ...formData, contractNumber: e.target.value })
+        }
       />
 
       <TextField
@@ -22,13 +32,13 @@ export default function FormDocument(props) {
         id='template'
         label='Template'
         variant='standard'
-        value={props.template}
+        value={template}
         select
-        onChange={(e) => props.setTemplate(e.target.value)}
+        onChange={e => setFormData({ ...formData, template: e.target.value })}
       >
-        {props.options.template.map((template) => (
-          <MenuItem key={template.idTemplate} value={template.idTemplate}>
-            {template.pdfName}
+        {options.template.map(template => (
+          <MenuItem key={template.id} value={template.id}>
+            {template.label}
           </MenuItem>
         ))}
       </TextField>
@@ -36,9 +46,9 @@ export default function FormDocument(props) {
       <div className={styles.leftArrowContainer}>
         <ArrowBackIcon
           className={styles.rightArrow}
-          onClick={() => props.setProgress(false)}
+          onClick={() => setProgress(false)}
         />
-        <button onClick={props.send}>Enviar</button>
+        <button onClick={send}>Enviar</button>
       </div>
     </div>
   )

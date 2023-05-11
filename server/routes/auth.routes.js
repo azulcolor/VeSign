@@ -25,11 +25,14 @@ router.post(
   postUser
 )
 router.post('/', userLogin)
+
 router.get('/user', jwtSalaValidator, getUsers)
 router.get('/userToken', jwtUserValidator, tokenValidator)
 router.get('/user/:id', jwtSalaValidator, getUser)
-router.patch('/user/:id',  updateUser)
-router.delete('/user/:id', jwtSalaValidator, deleteUser)
 router.get('/logged', jwtUserValidator, logged)
+
+router.patch('/user/:id', updateUser)
+
+router.delete('/user/:id', jwtSalaValidator, deleteUser)
 
 export default router

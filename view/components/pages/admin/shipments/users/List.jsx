@@ -1,50 +1,16 @@
 import { useState } from 'react'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 import { deleteUser } from '../../../../../hooks/api/fetcher'
 import styles from '../../../../../styles/admin/shipments.module.css'
 import Form from './Form'
-
-const MySwal = withReactContent(Swal)
-
-const del = (id) => {
-  MySwal.fire({
-    title: '¿Estás seguro?',
-    text: 'No podrás revertir esta acción',
-    icon: 'warning',
-    showCancelButton: true,
-    cancelButtonColor: '#FA6161',
-    confirmButtonColor: '#4a88ff',
-    cancelButtonText: 'Cancelar',
-    confirmButtonText: 'Eliminar',
-  }).then((result) => {
-    if (result.isConfirmed) {
-      try {
-        deleteUser(id)
-
-        MySwal.fire(
-          'Eliminado',
-          'El usuario ha sido eliminado con éxito',
-          'success'
-        ).then((result) => {
-          if (result.isConfirmed) {
-            window.location.reload()
-          }
-        })
-      } catch (error) {
-        MySwal.fire('Error', 'Ha ocurrido un error', 'error')
-      }
-    }
-  })
-}
+import FormContent from './FormContent'
+import { updateUser } from '../../../../../hooks/api/fetcher'
+import { deleteAlert } from '../../../../../services/sweetAlert'
 
 export default function List({ user }) {
   const [open, setOpen] = useState(false)
-  const [edit, setEdit] = useState({})
-
-  console.log(edit)
+  const [edit, setEdit] = useState()
 
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -59,14 +25,20 @@ export default function List({ user }) {
         </div>
       </div>
 
-      <DeleteIcon className={styles.delete} onClick={() => del(user.idUser)} />
+      <DeleteIcon
+        className={styles.delete}
+        onClick={() => deleteAlert(deleteUser, user.idUser)}
+      />
       <Form
         open={open}
         setOpen={setOpen}
         setEdit={setEdit}
+        updateById={updateUser}
         edit={edit}
-        user={user}
-      />
+        id={user.idUser}
+      >
+        <FormContent setEdit={setEdit} user={user} />
+      </Form>
     </div>
   )
 }

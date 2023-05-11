@@ -4,7 +4,7 @@ export default function Error({ errors }) {
   if (errors.length === 0) return null
 
   return (
-    <div style={{ position: 'absolute', bottom: '60%', right: '30px' }}>
+    <div style={{ position: 'absolute', bottom: '40%', right: '30px' }}>
       {errors.map((err) => {
         return (
           <Alert

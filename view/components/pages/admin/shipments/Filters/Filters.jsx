@@ -7,41 +7,38 @@ import Filter from './Filter'
 import Date from './Date'
 
 export default function Filters({
-  name,
-  setName,
-  status,
-  setStatus,
-  document,
-  setDocument,
-  setDate,
-  date,
-  contract,
-  setContract,
+  filters: { filterName, filterStatus, filterDocument, filterContract, date },
+  setFilters: { setName, setStatus, setDocument, setContract, setDate },
 }) {
   return (
-    <div className={styles.filter}>
+    <div className={styles.shipmentFilter}>
       <h1 className={styles.title}>Filtros</h1>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Stack spacing={3} sx={{ width: 300 }}>
-          <Filter id={'name'} options={name} label={'Nombres'} set={setName} />
+        <Stack spacing={3} sx={{ maxWidth: '100%', '& > *': { width: '100%' } }}>
+          <Filter
+            id={'name'}
+            options={filterName}
+            label={'Nombres'}
+            set={setName}
+          />
 
           <Filter
             id={'status'}
-            options={status}
+            options={filterStatus}
             label={'Estatus'}
             set={setStatus}
           />
 
           <Filter
             id={'document'}
-            options={document}
+            options={filterDocument}
             label={'Documento'}
             set={setDocument}
           />
 
           <Filter
             id={'contract'}
-            options={contract}
+            options={filterContract}
             label={'Contrato'}
             set={setContract}
           />

@@ -2,7 +2,9 @@ import { pool } from '../database/config.js'
 
 export const getTemplates = async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM pdftemplate')
+    const [rows] = await pool.query(
+      'SELECT p.idTemplate,  p.pdfName, p.pdfTemplate, p.idType, d.documentType, p.idIdiom FROM pdftemplate p, documenttype d WHERE p.idType = d.idType AND p.isActive = 1'
+    )
 
     if (rows.length <= 0)
       return res.status(404).json({ message: 'Templates not found' })
@@ -13,8 +15,6 @@ export const getTemplates = async (req, res) => {
       templates: rows,
     })
   } catch (error) {
-    console.log(error)
-
     return res.status(500).json({
       ok: false,
       message: 'Error getting templates',
@@ -33,8 +33,7 @@ export const createTemplate = async (req, res) => {
       message: 'Template created',
     })
   } catch (error) {
-    console.log(error)
-    res.send(500).json({
+    res.status(500).json({
       ok: false,
       message: 'Error creating template',
     })
@@ -46,10 +45,10 @@ export const updateTemplate = async (req, res) => {
     const { id } = req.params
     const { body } = req
 
-    await pool.query(
-      'UPDATE pdftemplate SET ? WHERE idTemplate = ?',
-      [body, id]
-    )
+    await pool.query('UPDATE pdftemplate SET ? WHERE idTemplate = ?', [
+      body,
+      id,
+    ])
 
     res.status(200).json({
       ok: true,
@@ -58,9 +57,49 @@ export const updateTemplate = async (req, res) => {
   } catch (error) {
     console.log(error)
 
-    res.send(500).json({
+    res.status(500).json({
       ok: false,
       message: 'Error updating template',
+    })
+  }
+}
+
+export const desactivateTemplate = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    await pool.query(
+      'UPDATE pdftemplate SET isActive = 0 WHERE idTemplate = ?',
+      [id]
+    )
+
+    res.status(200).json({
+      ok: true,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: 'Error desactivating template',
+    })
+  }
+}
+
+export const deleteTemplate = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    await pool.query('DELETE FROM pdftemplate WHERE idTemplate = ?', [id])
+
+    res.status(200).json({
+      ok: true,
+      message: 'Template deleted',
+    })
+  } catch (error) {
+    console.log(error)
+
+    res.status(500).json({
+      ok: false,
+      message: 'Error deleting template',
     })
   }
 }

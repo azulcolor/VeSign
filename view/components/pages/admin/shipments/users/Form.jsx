@@ -4,21 +4,32 @@ import Modal from '@mui/material/Modal'
 import Fade from '@mui/material/Fade'
 import CloseIcon from '@mui/icons-material/Close'
 
-import FormContent from './FormContent'
 import Button from '../../../../general/Button'
 import styles from '../../../../../styles/admin/shipments.module.css'
-import { updateUser } from '../../../../../hooks/api/fetcher'
 
-export default function Form({ open, setOpen, setEdit, edit, user }) {
+export default function Form({
+  open,
+  setOpen,
+  setEdit,
+  edit,
+  updateById,
+  id,
+  children,
+}) {
   const handleClose = () => {
     setOpen(false)
   }
 
-  const editUser = async () => {
-    await updateUser(edit, user.idUser)
+  const editData = async () => {
+    if (!edit) {
+      alert('No hay nada que editar')
+      return
+    }
+
+    await updateById(edit, id)
     handleClose()
+    setEdit(null)
     window.location.reload()
-    setEdit({})
   }
 
   return (
@@ -54,11 +65,9 @@ export default function Form({ open, setOpen, setEdit, edit, user }) {
           <p className={styles.editMessage}>
             Edita solamente los campos que quieres cambiar
           </p>
-          <FormContent setEdit={setEdit} user={user} />
+          {children}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button onClick={editUser} link={'users'}>
-              Actualizar
-            </Button>
+            <Button onClick={editData}>Actualizar</Button>
           </div>
         </Box>
       </Fade>

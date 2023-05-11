@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-const formatDate = (date) => dayjs(date).format('DD/MM/YYYY')
+const formatDate = date => dayjs(date).format('DD/MM/YYYY')
 
 export const useFilterClient = (
   client,
@@ -9,21 +9,22 @@ export const useFilterClient = (
   contract,
   name
 ) => {
-  let filter = client.data.clients.filter((client) =>
+  let filter = client.data.clients.filter(client =>
     client.fullname.includes(name)
   )
 
-  status && (filter = filter.filter((client) => client.idStatus === status))
 
-  document && (filter = filter.filter((client) => client.idType === document))
+  status && (filter = filter.filter(client => client.idStatus === status))
+
+  document && (filter = filter.filter(client => client.idType === document))
 
   date &&
     (filter = filter.filter(
-      (client) => formatDate(client.creationDate) === formatDate(date)
+      client => formatDate(client.creationDate) === formatDate(date)
     ))
 
   contract &&
-    (filter = filter.filter((client) => client.contractNumber === contract))
+    (filter = filter.filter(client => client.contractNumber === contract))
 
   return {
     filter,
@@ -31,34 +32,53 @@ export const useFilterClient = (
 }
 
 export const useFilterUser = (fullName, rol, user) => {
-  let filter = user.data.users.filter((user) =>
-    user.fullName.includes(fullName)
-  )
+  let filter = user.data.users.filter(user => user.fullName.includes(fullName))
 
-  rol && (filter = filter.filter((user) => user.idRol === rol))
+  rol && (filter = filter.filter(user => user.idRol === rol))
 
   return {
     filter,
   }
 }
 
-export const useOption = (options) => {
+export const useFilterTemplates = (
+  templatesData,
+  templateName,
+  typeOfTemplate
+) => {
+  let templatesDataFiltered = templatesData.data.templates.filter(
+    templateData => {
+      return templateData.pdfName.includes(templateName)
+    }
+  )
+
+  typeOfTemplate &&
+    (templatesDataFiltered = templatesDataFiltered.filter(
+      templateData => templateData.idType === typeOfTemplate
+    ))
+
+  return {
+    templatesDataFiltered,
+  }
+}
+
+export const useOption = options => {
   let filterStatus = options.data.options.documentStatus
   let filterDocument = options.data.options.documentType
+  let typeOfTemplates = options.data.options.documentType
 
   return {
     filterStatus,
     filterDocument,
+    typeOfTemplates,
   }
 }
 
-export const useClient = (client) => {
-  let filterName = client.data.clients.map((client) => client.fullname)
+export const useClient = client => {
+  let filterName = client.data.clients.map(client => client.fullname)
   filterName = [...new Set(filterName)]
 
-  let filterContract = client.data.clients.map(
-    (client) => client.contractNumber
-  )
+  let filterContract = client.data.clients.map(client => client.contractNumber)
   filterContract = [...new Set(filterContract)]
 
   return {
@@ -67,10 +87,22 @@ export const useClient = (client) => {
   }
 }
 
-export const useUser = (user) => {
-  let filterName = user.data.users.map((user) => user.fullName)
+export const useFilterTemplateNames = templatesData => {
+  let templateNamesFiltered = templatesData.data.templates.map(
+    templateData => templateData.pdfName
+  )
+
+  templateNamesFiltered = [...new Set(templateNamesFiltered)]
+
+  return {
+    templateNamesFiltered,
+  }
+}
+
+export const useUser = user => {
+  let filterName = user.data.users.map(user => user.fullName)
   filterName = [...new Set(filterName)]
-  let filterRol = user.data.users.map((user) => {
+  let filterRol = user.data.users.map(user => {
     return user.idRol === 1
       ? { id: 1, label: 'Socio' }
       : user.idRol === 2
@@ -79,7 +111,7 @@ export const useUser = (user) => {
   })
 
   filterRol = filterRol.filter((rol, index, self) => {
-    return self.findIndex((t) => t.id === rol.id) === index
+    return self.findIndex(t => t.id === rol.id) === index
   })
 
   return {

@@ -5,7 +5,14 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 import styles from '../../../../../styles/admin/shipments.module.css'
 
-export default function FormUser(props) {
+export default function FormUser({
+  setProgress,
+  options,
+  formData,
+  setFormData,
+}) {
+  const { fullName, email, areaCode, phoneNumber, idiom } = formData
+
   return (
     <div>
       <TextField
@@ -14,8 +21,8 @@ export default function FormUser(props) {
         id='name'
         label='Nombre'
         variant='standard'
-        value={props.fullName}
-        onChange={(e) => props.setFullName(e.target.value)}
+        value={fullName}
+        onChange={e => setFormData({ ...formData, fullName: e.target.value })}
       />
 
       <TextField
@@ -23,51 +30,57 @@ export default function FormUser(props) {
         id='email'
         label='Email'
         variant='standard'
-        value={props.email}
+        value={email}
         type='email'
-        onChange={(e) => props.setEmail(e.target.value)}
+        onChange={e => setFormData({ ...formData, email: e.target.value })}
       />
+
       <TextField
         id='areaCode'
         label='Extensión'
         variant='standard'
-        value={props.areaCode}
+        value={areaCode}
         select
-        onChange={(e) => props.setAreaCode(e.target.value)}
+        onChange={e => setFormData({ ...formData, areaCode: e.target.value })}
       >
-        {props.options.areaCode.map((areaCode) => (
+        {options.areaCode.map(areaCode => (
           <MenuItem key={areaCode} value={areaCode.idAreaCode}>
             {'+' + areaCode.areaCode}
           </MenuItem>
         ))}
       </TextField>
+
       <TextField
         id='phone'
         label='Teléfono'
         variant='standard'
         type='number'
-        value={props.phoneNumber}
-        onChange={(e) => props.setPhoneNumber(e.target.value)}
+        value={phoneNumber}
+        onChange={e =>
+          setFormData({ ...formData, phoneNumber: e.target.value })
+        }
       />
+
       <TextField
         fullWidth
         id='idiom'
         label='Idioma'
         variant='standard'
-        value={props.idiom}
+        value={idiom}
         select
-        onChange={(e) => props.setIdiom(e.target.value)}
+        onChange={e => setFormData({ ...formData, idiom: e.target.value })}
       >
-        {props.options.idiom.map((idiom) => (
+        {options.idiom.map(idiom => (
           <MenuItem key={idiom.idIdiom} value={idiom.idIdiom}>
             {idiom.idiom}
           </MenuItem>
         ))}
       </TextField>
+
       <div className={styles.rightArrowContainer}>
         <ArrowForwardIcon
           className={styles.rightArrow}
-          onClick={() => props.setProgress(true)}
+          onClick={() => setProgress(true)}
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 .column {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   align-items: center;
   justify-items: center;
   height: 90vh;
@@ -71,19 +71,36 @@
   color: var(--color-title);
   font-size: var(--desktop-text);
   justify-self: start;
-  margin-left: 2vw;
+}
+
+.type {
+  color: var(--color-paragraph);
+  font-size: var(--desktop-status);
+  justify-self: start;
 }
 
 .filter {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  gap: 22vh;
+  margin-left: 12vw;
+  height: 75vh;
+}
+
+.shipmentFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-left: 12vw;
 }
 
 .row {
   display: flex;
-  gap: 30vw;
+  align-items: center;
+  gap: 20vw;
   margin-top: 12vh;
 }
 
@@ -329,4 +346,67 @@
 .close {
   font-size: var(--desktop-h3);
   cursor: pointer;
+}
+
+.formInput {
+  width: 20vw;
+  margin-top: 1vh;
+}
+
+@keyframes anim {
+  0% {
+    color: var(--color-h3);
+  }
+  50% {
+    color: var(--color-paragraph);
+  }
+  100% {
+    color: var(--color-title);
+  }
+}
+.animation {
+  width: 10vw;
+  font-size: var(--desktop-status);
+  animation-name: anim;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+.uploadTemplate {
+  width: 10vw;
+  font-size: var(--desktop-status);
+  animation-name: anim;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+.orangeButton {
+  background-color: #e29624;
+  color: var(--color-background);
+  width: 6vw;
+  height: 3vh;
+  border-radius: 32px 32px 0px 0px;
+}
+
+.orangeButton:hover {
+  background-color: #d7a645;
+}
+
+.redButton {
+  background-color: #f35c5c;
+  color: var(--color-background);
+  width: 6vw;
+  height: 3vh;
+  border-radius: 32px 32px 0px 0px;
+}
+
+.redButton:hover {
+  background-color: #d64545;
+}
+
+.templatesView {
+  display: flex;
+  flex-direction: column;
+  height: 89vh;
+  overflow: auto;
 }

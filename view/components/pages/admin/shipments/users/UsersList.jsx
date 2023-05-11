@@ -6,8 +6,8 @@ export default function UsersList({ users }) {
     <div className={styles.clients}>
       <h1 className={styles.title}>Clientes</h1>
       <div className={styles.list}>
-        {users.map((user) => (
-          <List user={user} />
+        {users.map(user => (
+          <List key={user.idUser} user={user} />
         ))}
       </div>
     </div>
