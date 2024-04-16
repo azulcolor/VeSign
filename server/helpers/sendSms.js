@@ -1,7 +1,8 @@
 import 'dotenv/config'
 import axios from 'axios'
 
-const link = 'http://localhost:3001/sign/'
+const frontRoute = process.env.FRONTEND_ROUTE
+const link = `${frontRoute}/sign/`
 
 export const sendSms = async (cellPhone, token, reference) => {
   

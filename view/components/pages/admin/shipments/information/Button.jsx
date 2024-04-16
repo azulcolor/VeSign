@@ -2,10 +2,12 @@ import axios from 'axios'
 
 import styles from '../../../../../styles/admin/shipments.module.css'
 
+const API = process.env.NEXT_PUBLIC_API_ROUTE
+
 export default function Button({ idStatus, setIdStatus, idDocument }) {
   const post = async (status, idDocument) => {
     setIdStatus(status)
-    await axios.patch(`http://localhost:3000/api/sendDocument/${idDocument}`, {
+    await axios.patch(`${API}/sendDocument/${idDocument}`, {
       idStatus: status,
     })
   }

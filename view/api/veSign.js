@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const API = process.env.NEXT_PUBLIC_API_ROUTE;
+
+console.log(API)
+
 const veSignApi = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: API,
 })
 
 export default veSignApi;

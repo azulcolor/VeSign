@@ -13,12 +13,14 @@ import {
 import { useState } from 'react'
 import TemplatesView from '../../../components/pages/admin/shipments/templates/TemplatesView'
 
+const API = process.env.NEXT_PUBLIC_API_ROUTE
+
 function Templates() {
   const [templateName, setTemplateName] = useState('')
   const [typeOfTemplate, setTypeOfTemplate] = useState('')
 
-  let templatesData = useSWR('http://localhost:3000/api/template', fetcher)
-  let options = useSWR('http://localhost:3000/api/client/options', fetcher)
+  let templatesData = useSWR(`${API}/template`, fetcher)
+  let options = useSWR(`${API}/client/options`, fetcher)
 
   if (options.error || templatesData.error) return <div>failed to load</div>
   if (options.isLoading || templatesData.isLoading) return <div>loading...</div>

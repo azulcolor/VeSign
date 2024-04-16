@@ -41,7 +41,7 @@ export default function FormUser({
         variant='standard'
         value={areaCode}
         select
-        onChange={e => setFormData({ ...formData, areaCode: e.target.value })}
+        onChange={e => setFormData({ ...formData, idAreaCode: e.target.value })}
       >
         {options.areaCode.map(areaCode => (
           <MenuItem key={areaCode} value={areaCode.idAreaCode}>
@@ -68,7 +68,7 @@ export default function FormUser({
         variant='standard'
         value={idiom}
         select
-        onChange={e => setFormData({ ...formData, idiom: e.target.value })}
+        onChange={e => setFormData({ ...formData, idIdiom: e.target.value })}
       >
         {options.idiom.map(idiom => (
           <MenuItem key={idiom.idIdiom} value={idiom.idIdiom}>

@@ -34,7 +34,7 @@ export default function FormDocument({
         variant='standard'
         value={template}
         select
-        onChange={e => setFormData({ ...formData, template: e.target.value })}
+        onChange={e => setFormData({ ...formData, idTemplate: e.target.value })}
       >
         {options.template.map(template => (
           <MenuItem key={template.id} value={template.id}>

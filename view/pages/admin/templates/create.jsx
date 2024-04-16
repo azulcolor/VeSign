@@ -10,11 +10,13 @@ import { createTemplate, fetcher } from '../../../hooks/api/fetcher'
 import Button from '../../../components/general/Button'
 import Error from '../../../components/pages/admin/shipments/form/Error'
 
+const API = process.env.NEXT_PUBLIC_API_ROUTE
+
 function Create() {
   const [errors, setErrors] = useState([])
   const [templateData, setTemplateData] = useState()
 
-  let options = useSWR('http://localhost:3000/api/client/options', fetcher)
+  let options = useSWR(`${API}/client/options`, fetcher)
 
   if (options.error) return <div>failed to load</div>
   if (options.isLoading) return <div>loading...</div>

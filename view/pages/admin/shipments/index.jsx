@@ -19,12 +19,13 @@ function Shipments() {
   const [document, setDocument] = useState()
   const [contract, setContract] = useState('')
   const [date, setDate] = useState()
+  const API = process.env.NEXT_PUBLIC_API_ROUTE
 
-  let client = useSWR('http://localhost:3000/api/client', url =>
+  let client = useSWR(`${API}/client`, url =>
     fetcher(url, date)
   )
 
-  const options = useSWR('http://localhost:3000/api/client/options', fetcher)
+  const options = useSWR(`${API}/client/options`, fetcher)
 
   if (client.error || options.error) return <div>failed to load</div>
   if (client.isLoading || options.isLoading) return <div>loading...</div>

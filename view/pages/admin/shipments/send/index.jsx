@@ -9,6 +9,7 @@ import FormDocument from '../../../../components/pages/admin/shipments/form/Form
 import FormUser from '../../../../components/pages/admin/shipments/form/FormUser'
 import styles from '../../../../styles/admin/shipments.module.css'
 
+const API = process.env.NEXT_PUBLIC_API_ROUTE
 function Send() {
   const [progress, setProgress] = useState(false)
   const [formData, setFormData] = useState({
@@ -16,12 +17,13 @@ function Send() {
   })
   const [error, setError] = useState([])
 
-  const options = useSWR('http://localhost:3000/api/client/options', fetcher)
+  const options = useSWR(`${API}/client/options`, fetcher)
 
   if (options.error) return <div>failed to load</div>
   if (options.isLoading) return <div>loading...</div>
 
   const { data } = options
+  console.log(formData)
 
   return (
     <AdminLayout>

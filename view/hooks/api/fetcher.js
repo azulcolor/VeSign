@@ -11,6 +11,8 @@ const headers = {
   },
 }
 
+console.log(token)
+
 export const fetcher = (url, date = '') =>
   axios
     .get(url, {
@@ -24,6 +26,7 @@ export const fetcher = (url, date = '') =>
 export const sendDocument = async (formData, setError) => {
   try {
     const res = await veSignApi.post(`/sendDocument`, formData, headers)
+    console.log(res)
     const { id } = res.data
 
     window.location.href = `/admin/shipments/send/${id}`

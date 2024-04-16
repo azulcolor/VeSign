@@ -13,11 +13,13 @@ import {
 } from '../../../hooks/components/admin/useFilter'
 import Link from 'next/link'
 
+const API = process.env.NEXT_PUBLIC_API_ROUTE
+
 function Users() {
   const [fullName, setFullName] = useState('')
   const [rol, setRol] = useState()
 
-  let users = useSWR('http://localhost:3000/api/auth/user', fetcher)
+  let users = useSWR(`${API}/auth/user`, fetcher)
 
   if (users.isLoading) return <div>loading...</div>
   if (users.error) return <div>failed to load</div>
