@@ -3,7 +3,7 @@ import { fetcher } from '../../../hooks/api/fetcher'
 import { useState } from 'react'
 
 import { AdminLayout } from '../../../components/layouts'
-import UsersList from '../../../components/pages/admin/shipments/users/usersList'
+import UsersList from '../../../components/pages/admin/shipments/users/UsersList'
 import authenticatedRoute from '../../../components/pages/auth/authenticatedRoute'
 import styles from '../../../styles/admin/shipments.module.css'
 import UsersFilter from '../../../components/pages/admin/shipments/users/UsersFilter'

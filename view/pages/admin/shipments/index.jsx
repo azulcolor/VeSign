@@ -8,8 +8,8 @@ import {
   useClient,
   useOption,
 } from '../../../hooks/components/admin/useFilter'
-import Filters from '../../../components/pages/admin/shipments/filters/Filters'
-import ClientList from '../../../components/pages/admin/shipments/clientList/ClientList'
+import Filters from '../../../components/pages/admin/shipments/Filters/Filters'
+import ClientList from '../../../components/pages/admin/shipments/ClientList/ClientList'
 import styles from '../../../styles/admin/shipments.module.css'
 import authenticatedRoute from '../../../components/pages/auth/authenticatedRoute'
 

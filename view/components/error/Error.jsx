@@ -1,5 +1,5 @@
 import styles from '../../styles/error.module.css'
-import CatImage from './catImage'
+import CatImage from './CatImage'
 
 import { SignLayout } from '../layouts'
 

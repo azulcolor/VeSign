@@ -1,7 +1,7 @@
 import { veSignApi } from '../../../api'
 import Information from '../../../components/pages/admin/shipments/information/Information'
 import { AdminLayout } from '../../../components/layouts'
-import PdfViewer from '../../../components/general/document/pdfViewer'
+import PdfViewer from '../../../components/general/document/PdfViewer'
 import styles from '../../../styles/admin/shipments.module.css'
 import authenticatedRoute from '../../../components/pages/auth/authenticatedRoute'
 

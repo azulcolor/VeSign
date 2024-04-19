@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import styles from '../../../../../styles/admin/shipments.module.css'
-import PDFViewer from '../../../../general/document/pdfViewer'
+import PDFViewer from '../../../../general/document/PdfViewer'
 import Form from '../users/Form'
 import FormContent from './FormContent'
 import {

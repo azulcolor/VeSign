@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack'
 import Link from 'next/link'
 
 import styles from '../../../../../styles/admin/shipments.module.css'
-import Filter from '../filters/Filter'
+import Filter from '../Filters/Filter'
 
 export default function UsersFilter({ fullname, setFullname, rol, setRol }) {
   return (

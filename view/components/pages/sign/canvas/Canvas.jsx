@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 import Link from 'next/link'
 
 import Component from './component'
-import SignButton from './signButton'
+import SignButton from './SignButton'
 import styles from '../../../../styles/general/button.module.css'
 
 export default function Canva() {
